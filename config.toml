@@ -1,0 +1,86 @@
+baseURL = "https://workshop-sample.fcjuni.com/"
+relativeURLs = false
+canonifyURLs = false
+defaultContentLanguage = "en"
+
+# Change the default theme to be use when building the site with Hugo
+theme = "hugo-theme-learn"
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "workshop"
+  # Git hub repo link
+  editURL = ""
+  description = ""
+  author = "tienguyen4118@gmail.com"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  
+[Languages]
+[Languages.en]
+title = "Internship Report"
+weight = 1
+languageName = "English"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
+identifier = "AWS Study Group"
+url = "https://awsstudygroup.com"
+weight = 20
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-facebook'></i> AWS Study Group - FB Group"
+identifier = "AWS Study Group FB"
+url = "https://www.facebook.com/groups/awsstudygroupfcj"
+weight = 20
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-github'></i> Nguyen Duc Tien - Github"
+identifier = "Github"
+url = "https://github.com/tien190504"
+weight = 30
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-linkedin'></i> Nguyen Duc Tien - LinkedIn"
+identifier = "LinkedIn"
+url = "https://www.linkedin.com/in/nguy%E1%BB%85n-%C4%91%E1%BB%A9c-ti%E1%BA%BFn-63a37a308/"
+weight = 40
+
+[Languages.vi]
+title = "Báo cáo thực tập"
+weight = 2
+languageName = "Tiếng Việt"
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
+identifier = "AWS Study Group"
+url = "http://awsstudygroup.com"
+weight = 20
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB"
+identifier = "AWS Study Group FB"
+url = "https://www.facebook.com/groups/awsstudygroupfcj"
+weight = 20
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-github'></i> Nguyễn Đức Tiến - Github"
+identifier = "Github"
+url = "https://github.com/tien190504"
+weight = 30
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-linkedin'></i> Nguyễn Đức Tiến - LinkedIn"
+identifier = "LinkedIn"
+url = "https://www.linkedin.com/in/nguy%E1%BB%85n-%C4%91%E1%BB%A9c-ti%E1%BA%BFn-63a37a308/"
+weight = 40
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
