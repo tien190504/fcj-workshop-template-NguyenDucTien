@@ -6,13 +6,11 @@ on:
       - main
   workflow_dispatch:
 
-# Quyền hạn cần thiết để deploy thông qua GitHub Actions
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Chỉ cho phép một deployment chạy tại một thời điểm
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -22,28 +20,33 @@ defaults:
     shell: bash
 
 jobs:
-  # Job 1: Build trang web
   build:
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.160.1
     steps:
+      # 1. Cài đặt trực tiếp Hugo Extended từ trang phát hành chính thức của Hugo
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ HUGO_VERSION }}/hugo_extended_${{ HUGO_VERSION }}_linux-amd64.deb
+          sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      # 2. Tải mã nguồn và các submodule theme
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
 
+      # 3. Cấu hình GitHub Pages
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "0.160.1"
-          extended: true
-
+      # 4. Biên dịch trang web bằng Hugo
       - name: Build with Hugo
         env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENV: production
         run: |
           hugo \
@@ -51,12 +54,12 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      # 5. Đóng gói kết quả build
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-  # Job 2: Deploy trực tiếp lên GitHub Pages
   deploy:
     environment:
       name: github-pages
