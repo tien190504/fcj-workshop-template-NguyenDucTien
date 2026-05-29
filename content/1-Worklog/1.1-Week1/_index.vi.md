@@ -1,59 +1,82 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-04-20
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+
 
 
 ### Mục tiêu tuần 1:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Làm quen với AWS Management Console và các thao tác kiểm tra thông tin tài khoản, Region, Billing/Credits.
+* Tìm hiểu IAM ở mức cơ bản, gồm user, group, role, policy và lỗi thiếu quyền truy cập.
+* Thực hành Amazon S3 cơ bản: tạo bucket và upload object.
+* Thử tạo EC2 instance, ghi nhận lỗi AMI không hợp lệ theo Region và rút kinh nghiệm khi chọn AMI.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2   | - Đăng nhập AWS Management Console <br> - Kiểm tra Region đang sử dụng <br> - Kiểm tra thông tin tài khoản và khu vực Billing/Credits | 20/04/2026 | 20/04/2026 | <https://docs.aws.amazon.com/console/> |
+| 3   | - Tìm hiểu IAM user group và IAM user <br> - Tạo `AdminGroup` <br> - Tạo/kiểm tra `AdminUser` và `OperatorUser` | 21/04/2026 | 21/04/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/> |
+| 4   | - Tạo IAM role `AdminRole` <br> - Gắn policy `AdministratorAccess` <br> - Kiểm tra Switch Role và lỗi `AccessDenied` khi user thiếu quyền | 22/04/2026 | 22/04/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html> |
+| 5   | - Tạo S3 bucket `aws-s3-demo-tien` tại Region `ap-southeast-1` <br> - Upload file `download.jpg` lên bucket <br> - Kiểm tra trạng thái upload thành công | 23/04/2026 | 23/04/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/> |
+| 6   | - Thử launch EC2 instance tại Region `ap-southeast-2` <br> - Chọn instance type `t3.micro` <br> - Ghi nhận lỗi AMI ID không hợp lệ và rút kinh nghiệm chọn AMI theo đúng Region | 24/04/2026 | 24/04/2026 | <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/> |
 
+### Nội dung thực hiện chi tiết:
+
+#### AWS Console và Credits
+
+Trong ngày đầu tiên, tôi đăng nhập vào AWS Management Console để làm quen với giao diện quản trị dịch vụ AWS. Tôi kiểm tra Region đang sử dụng, quan sát khu vực Console Home và truy cập phần Billing/Credits để nắm được số credit còn lại, số credit đã sử dụng và các credit đang hoạt động.
+
+> **Ảnh minh chứng:**
+
+![AWS Console Home](/images/1.1-Week1/aws-console-home.png)
+
+![AWS Credits](/images/1.1-Week1/aws-credit.png)
+
+#### IAM User Group, User và Role
+
+Tôi thực hành với dịch vụ IAM để hiểu cách AWS quản lý danh tính và phân quyền. Tôi tạo user group `AdminGroup`, kiểm tra danh sách IAM users, tạo các user như `AdminUser` và `OperatorUser`, sau đó theo dõi số lượng user hiển thị trong IAM console.
+
+Tiếp theo, tôi tạo IAM role `AdminRole` và gắn policy `AdministratorAccess` để role có quyền quản trị. Qua phần chi tiết role, tôi kiểm tra policy đã được gắn và xem role xuất hiện trong danh sách Roles.
+
+> **Ảnh minh chứng:** Chèn ảnh IAM user group, IAM users, IAM role và policy `AdministratorAccess` tại đây.
+
+#### Kiểm tra quyền truy cập và Switch Role
+
+Khi sử dụng `OperatorUser`, tôi gặp lỗi `AccessDenied` khi truy cập một số chức năng như liệt kê IAM users hoặc xem thông tin yêu cầu quyền cao hơn. Sau đó, tôi kiểm tra cơ chế Switch Role sang `AdminRole` để thấy sự khác biệt giữa user thông thường và role có quyền quản trị.
+
+Qua phần này, tôi hiểu rằng một IAM user chỉ thực hiện được hành động khi có policy cho phép trực tiếp hoặc thông qua group/role phù hợp. Nếu thiếu quyền, AWS Console sẽ hiển thị lỗi cụ thể về action bị từ chối.
+
+> **Ảnh minh chứng:** Chèn ảnh lỗi `AccessDenied`, thông tin `OperatorUser` và màn hình Switch Role tại đây.
+
+#### S3 bucket và upload object
+
+Tôi chuyển sang Amazon S3 để thực hành lưu trữ object. Tôi tạo bucket `aws-s3-demo-tien` tại Region `ap-southeast-1`, sau đó upload file `download.jpg` lên bucket. Kết quả upload hiển thị thành công với trạng thái `Succeeded`.
+
+Hoạt động này giúp tôi hiểu bucket là nơi lưu trữ object trong S3, mỗi bucket thuộc một Region cụ thể và có thể dùng để quản lý file theo dạng object storage.
+
+> **Ảnh minh chứng:** Chèn ảnh danh sách bucket `aws-s3-demo-tien` và kết quả upload file `download.jpg` tại đây.
+
+#### EC2 launch attempt và lỗi AMI
+
+Tôi thử tạo EC2 instance tại Region `ap-southeast-2` với instance type `t3.micro`. Trong quá trình chọn AMI, AWS Console báo lỗi AMI ID không hợp lệ, có thể do AMI không tồn tại, không còn khả dụng hoặc không thuộc đúng tài khoản/Region đang chọn.
+
+Từ lỗi này, tôi rút ra rằng khi tạo EC2 instance cần kiểm tra kỹ Region, AMI ID, quyền truy cập AMI và loại kiến trúc CPU phù hợp trước khi launch instance.
+
+> **Ảnh minh chứng:** Chèn ảnh màn hình launch EC2 và lỗi AMI ID không hợp lệ tại đây.
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Nắm được các thao tác cơ bản trên AWS Management Console như chọn Region, tìm dịch vụ và kiểm tra thông tin tài khoản.
+* Biết cách kiểm tra Billing/Credits để theo dõi credit còn lại, credit đã sử dụng và trạng thái credit.
+* Hiểu khái niệm IAM identity, user group, role, managed policy và cách quyền truy cập ảnh hưởng đến thao tác trên AWS Console.
+* Tạo và kiểm tra được `AdminGroup`, `AdminUser`, `OperatorUser`, `AdminRole`.
+* Gắn được policy `AdministratorAccess` cho `AdminRole` và quan sát sự khác biệt quyền giữa user/role.
+* Nhận diện được lỗi `AccessDenied` khi IAM user thiếu quyền thực hiện action.
+* Tạo được S3 bucket `aws-s3-demo-tien` tại Region `ap-southeast-1`.
+* Upload thành công file `download.jpg` lên S3 bucket và kiểm tra trạng thái upload.
+* Biết nhận diện lỗi AMI không hợp lệ khi thử launch EC2 instance và hiểu cần chọn AMI phù hợp với Region.
+* Không đưa thông tin nhạy cảm như AWS Account ID vào nội dung báo cáo.
