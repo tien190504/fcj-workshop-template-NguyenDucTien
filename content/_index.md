@@ -8,10 +8,6 @@ chapter: false
     
 # Internship Report
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
 ### Student Information:
 &emsp; **Full Name:** Nguyen Duc Tien
 
@@ -35,7 +31,7 @@ chapter: false
 
 &emsp; **LinkedIn:** [Nguyễn Đức Tiến](https://www.linkedin.com/in/nguy%E1%BB%85n-%C4%91%E1%BB%A9c-ti%E1%BA%BFn-63a37a308/)
 
-![Your profile picture](/images/avatar.png)
+<img src="/images/avatar.png" alt="Your profile picture" width="240" height="300" style="width:240px;height:300px;object-fit:cover;border-radius:8px;display:block;margin:32px auto 40px;">
 
 ### Report Content
 

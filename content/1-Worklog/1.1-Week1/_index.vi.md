@@ -18,11 +18,11 @@ pre: " <b> 1.1. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Đăng nhập AWS Management Console <br> - Kiểm tra Region đang sử dụng <br> - Kiểm tra thông tin tài khoản và khu vực Billing/Credits | 20/04/2026 | 20/04/2026 | <https://docs.aws.amazon.com/console/> |
-| 3   | - Tìm hiểu IAM user group và IAM user <br> - Tạo `AdminGroup` <br> - Tạo/kiểm tra `AdminUser` và `OperatorUser` | 21/04/2026 | 21/04/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/> |
-| 4   | - Tạo IAM role `AdminRole` <br> - Gắn policy `AdministratorAccess` <br> - Kiểm tra Switch Role và lỗi `AccessDenied` khi user thiếu quyền | 22/04/2026 | 22/04/2026 | <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html> |
+| 2   | - Đăng nhập AWS Management Console <br> - Kiểm tra Region đang sử dụng <br> - Kiểm tra thông tin tài khoản và khu vực Billing/Credits | 20/04/2026 | 20/04/2026 | <https://000001.awsstudygroup.com/vi/> |
+| 3   | - Tìm hiểu IAM user group và IAM user <br> - Tạo `AdminGroup` <br> - Tạo/kiểm tra `AdminUser` và `OperatorUser` | 21/04/2026 | 21/04/2026 | <https://000002.awsstudygroup.com/vi/> |
+| 4   | - Tạo IAM role `AdminRole` <br> - Gắn policy `AdministratorAccess` <br> - Kiểm tra Switch Role và lỗi `AccessDenied` khi user thiếu quyền | 22/04/2026 | 22/04/2026 | <https://000002.awsstudygroup.com/vi/> |
 | 5   | - Tạo S3 bucket `aws-s3-demo-tien` tại Region `ap-southeast-1` <br> - Upload file `download.jpg` lên bucket <br> - Kiểm tra trạng thái upload thành công | 23/04/2026 | 23/04/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/> |
-| 6   | - Thử launch EC2 instance tại Region `ap-southeast-2` <br> - Chọn instance type `t3.micro` <br> - Ghi nhận lỗi AMI ID không hợp lệ và rút kinh nghiệm chọn AMI theo đúng Region | 24/04/2026 | 24/04/2026 | <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/> |
+| 6   | - Thử launch EC2 instance tại Region `ap-southeast-2` <br> - Chọn instance type `t3.micro` <br> - Ghi nhận lỗi AMI ID không hợp lệ và rút kinh nghiệm chọn AMI theo đúng Region | 24/04/2026 | 24/04/2026 | <https://000001.awsstudygroup.com/vi/> |
 
 ### Nội dung thực hiện chi tiết:
 
@@ -32,9 +32,9 @@ Trong ngày đầu tiên, tôi đăng nhập vào AWS Management Console để l
 
 > **Ảnh minh chứng:**
 
-![AWS Console Home](/images/1.1-Week1/aws-console-home.png)
+> ![AWS Console Home](/images/1.1-Week1/aws-console-home.png)
 
-![AWS Credits](/images/1.1-Week1/aws-credit.png)
+> ![AWS Credits](/images/1.1-Week1/aws-credit.png)
 
 #### IAM User Group, User và Role
 
@@ -42,7 +42,12 @@ Tôi thực hành với dịch vụ IAM để hiểu cách AWS quản lý danh t
 
 Tiếp theo, tôi tạo IAM role `AdminRole` và gắn policy `AdministratorAccess` để role có quyền quản trị. Qua phần chi tiết role, tôi kiểm tra policy đã được gắn và xem role xuất hiện trong danh sách Roles.
 
-> **Ảnh minh chứng:** Chèn ảnh IAM user group, IAM users, IAM role và policy `AdministratorAccess` tại đây.
+> **Ảnh minh chứng:**
+> ![AdminGroup](/images/1.1-Week1/admin-group.png)
+> ![AdminUserAndOperatorUser](/images/1.1-Week1/admin-user-operator-user.png)
+> ![OperatorUser](/images/1.1-Week1/admin-role.png)
+> ![AdminRoleDetails](/images/1.1-Week1/admin-role-details.png)
+
 
 #### Kiểm tra quyền truy cập và Switch Role
 
@@ -50,7 +55,12 @@ Khi sử dụng `OperatorUser`, tôi gặp lỗi `AccessDenied` khi truy cập m
 
 Qua phần này, tôi hiểu rằng một IAM user chỉ thực hiện được hành động khi có policy cho phép trực tiếp hoặc thông qua group/role phù hợp. Nếu thiếu quyền, AWS Console sẽ hiển thị lỗi cụ thể về action bị từ chối.
 
-> **Ảnh minh chứng:** Chèn ảnh lỗi `AccessDenied`, thông tin `OperatorUser` và màn hình Switch Role tại đây.
+> **Ảnh minh chứng:**
+> ![AccessDenied](/images/1.1-Week1/access-denied.png)
+> ![OperatorUser](/images/1.1-Week1/operator-user.png)
+
+> ![SwitchRole](/images/1.1-Week1/switch-role.png)
+> ![AdminRole](/images/1.1-Week1/admin-role-console.png)
 
 #### S3 bucket và upload object
 
@@ -58,15 +68,9 @@ Tôi chuyển sang Amazon S3 để thực hành lưu trữ object. Tôi tạo bu
 
 Hoạt động này giúp tôi hiểu bucket là nơi lưu trữ object trong S3, mỗi bucket thuộc một Region cụ thể và có thể dùng để quản lý file theo dạng object storage.
 
-> **Ảnh minh chứng:** Chèn ảnh danh sách bucket `aws-s3-demo-tien` và kết quả upload file `download.jpg` tại đây.
-
-#### EC2 launch attempt và lỗi AMI
-
-Tôi thử tạo EC2 instance tại Region `ap-southeast-2` với instance type `t3.micro`. Trong quá trình chọn AMI, AWS Console báo lỗi AMI ID không hợp lệ, có thể do AMI không tồn tại, không còn khả dụng hoặc không thuộc đúng tài khoản/Region đang chọn.
-
-Từ lỗi này, tôi rút ra rằng khi tạo EC2 instance cần kiểm tra kỹ Region, AMI ID, quyền truy cập AMI và loại kiến trúc CPU phù hợp trước khi launch instance.
-
-> **Ảnh minh chứng:** Chèn ảnh màn hình launch EC2 và lỗi AMI ID không hợp lệ tại đây.
+> **Ảnh minh chứng:**
+> ![S3Bucket](/images/1.1-Week1/s3-bucket.png)
+> ![S3Upload](/images/1.1-Week1/s3-upload.png)
 
 ### Kết quả đạt được tuần 1:
 

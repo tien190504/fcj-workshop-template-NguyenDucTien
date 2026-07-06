@@ -1,125 +1,128 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-05-23
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+
+# Bài thu hoạch sự kiện “FCAJ Community Day”
+
+**Ngày diễn ra:** 23/05/2026
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+* Tạo không gian để những người tham dự không chỉ nghe hội thảo mà còn kết nối và truyền cảm hứng cho nhau.
+* Chia sẻ các kiến thức thực tế xoay quanh công nghệ AI, Cloud và các câu chuyện kinh nghiệm từ các chuyên gia.
+* Cập nhật tình hình thị trường việc làm IT trong bối cảnh AI phát triển mạnh mẽ.
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+* **Nguyễn Gia Hưng** - Solution Architect tại AWS Việt Nam.
+* **Tình Trương** - Platform Engineer tại GoTymeX.
+* **Hải Anh** - Pacific Việt Nam.
+* **Nguyễn Hấn Thịnh** - DevOps Engineer.
+* **Uyển & Thảo** - Thành viên nhóm UTM Morpo.
+* **Đức Đào** - Solution Architect tại Cloud Kinetics.
+* **Vy Lâm** - Senior Business Systems Analyst tại VPBank.
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Thị trường việc làm & Sự bùng nổ của AI (Nguyễn Gia Hưng)
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+* Sự phát triển của AI làm chi phí tạo ra phần mềm rẻ hơn, dẫn đến nhu cầu và số lượng phần mềm tăng khủng khiếp.
+* Xuất hiện các cơ hội việc làm mới như đi sửa code do AI sinh ra, vận hành và scale hệ thống (Platform Engineering).
+* Bằng đại học vẫn rất quan trọng trong khâu tuyển dụng để vượt qua vòng lọc hồ sơ của HR.
+* Ứng viên cần có kiến thức nghiệp vụ thực tế và sản phẩm thật (product) thay vì chỉ làm demo.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Làm chủ Context khi sử dụng AI (Tình Trương)
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+* AI thường đưa ra kết quả không tốt do thiếu ngữ cảnh (context), không phải do model kém.
+* Hội chứng "Internet Puller": Việc ném tất cả mọi thông tin, code, plugin vào AI mà không chọn lọc sẽ làm AI bị nhiễu và tốn token.
+* Cần cung cấp context đúng trọng tâm: Mục tiêu (Goal), tình huống, giới hạn (constraints) và tiêu chí thành công.
+* Khái niệm "Second AI Brain": Hệ thống lưu trữ, truy xuất ngữ cảnh và bộ nhớ để giúp AI cá nhân hóa và làm việc hiệu quả hơn.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+#### Phân tích dữ liệu với Amazon Q & QuickSight (Hải Anh)
 
-#### Domain-Driven Design (DDD)
+* Sử dụng AI Agent để đọc hiểu các file data (như Excel) và tự động tạo ra các dashboard phân tích mà không cần kỹ năng BI chuyên sâu.
+* Giới thiệu về MCP (Model Context Protocol) như những "cánh tay nối dài" giúp AI tương tác trực tiếp với các dịch vụ khác.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Tối ưu chi phí và bảo mật với Amazon CloudFront (Nguyễn Hấn Thịnh)
 
-#### Event-Driven Architecture
+* Giới thiệu cơ chế tính giá mới (Flat-rate pricing) của CloudFront giúp doanh nghiệp kiểm soát chi phí, tránh tình trạng "bill spike".
+* CloudFront hỗ trợ bảo mật mạnh mẽ: Chống DDoS, tích hợp WAF, hỗ trợ HTTPS/mTLS và tính năng VPC Origin giúp ẩn hoàn toàn hạ tầng khỏi Internet.
+* Tối ưu hiệu suất thông qua cơ chế Caching đa tầng và giao thức HTTP/3.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+#### Kinh nghiệm thực chiến Hackathon 36 giờ (Uyển & Thảo)
 
-#### Compute Evolution
+* Hành trình xây dựng ứng dụng AI tạo và chỉnh sửa UI/UX (UTM Morpo) trong 36 tiếng liên tục.
+* Kiến trúc sử dụng hệ thống Agent để phân tích hình ảnh (wireframe), tạo CSS/Layout và sinh ra HTML code.
+* Những khó khăn thực tế: Hết token limit giữa chừng, AI sinh code lan man (over-generation) và cạn kiệt sức khỏe.
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+#### Tính "không xác định" của LLM (Đức Đào)
 
-#### Amazon Q Developer
+* Dù cấu hình Temperature = 0, kết quả trả về từ các LLM (đặc biệt qua API) vẫn không giống nhau 100%.
+* Nguyên nhân kỹ thuật: Do cách máy tính làm tròn số thập phân và cơ chế tính toán song song của GPU.
+* Nguyên nhân thương mại: Các nhà cung cấp áp dụng Inference Optimization (gộp nhiều prompt lại để xử lý chung) làm thay đổi điểm số của từ vựng.
+* Giải pháp: Chạy nhiều lần để lấy kết quả chung, tự host model ở local, hoặc bắt buộc phải thiết kế hệ thống downstream có khả năng handle lỗi.
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+#### Xây dựng Multi-Agent cho Doanh nghiệp (Vy Lâm)
+
+* Sử dụng Multi-Agent System để giải bài toán đánh giá tín dụng cho Startup, nơi dữ liệu rất đa chiều (tài chính, thị trường, đội ngũ).
+* Single Agent sẽ bị quá tải context, loãng chuyên môn và tạo ra rủi ro (single point of failure).
+* Kiến trúc Multi-Agent hoạt động như một hội đồng: Có Manager, Financial Analyst, Market Analyst, Team Evaluator cùng hoạt động song song và kiểm tra chéo nhau.
+* Nhấn mạnh tầm quan trọng của Guardrails & Compliance trong môi trường doanh nghiệp (bảo mật dữ liệu, chống prompt injection, audit trail).
+* Triển khai dự án AI trong doanh nghiệp cần có bài toán ROI rõ ràng và lộ trình (Roadmap) cụ thể.
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Về Tư Duy Phát Triển
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+* **Business-first approach:** Mọi giải pháp công nghệ hay AI đều phải xuất phát từ việc giải quyết bài toán của người dùng cuối hoặc doanh nghiệp.
+* **Sản phẩm thật:** Trong thời đại AI, kỹ năng tạo ra một sản phẩm hoàn chỉnh và vận hành được quan trọng hơn là chỉ làm các bài tập demo.
+* **Context Engineering:** Nắm được kỹ năng cô đọng và thiết kế ngữ cảnh chính xác cho AI là kỹ năng cốt lõi trong tương lai.
 
-#### Kiến Trúc Kỹ Thuật
+#### Về Kiến Trúc Kỹ Thuật
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+* Hiểu rõ khi nào nên dùng Single Agent và khi nào bắt buộc phải dùng Multi-Agent (khi cần đa chuyên môn và có tính quyết định cao).
+* Nhận thức được bản chất không xác định (probabilistic) của LLM ngay cả khi Temperature = 0 để thiết kế hệ thống linh hoạt, chống lỗi.
+* Biết cách bảo vệ hệ thống AI qua việc áp dụng Guardrails, chặn Prompt Injection và bảo mật VPC.
 
 ### Ứng Dụng Vào Công Việc
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+* **Tối ưu hóa Prompts:** Ngừng ném dữ liệu rác (Internet Puller) vào AI, thay vào đó thiết lập rõ Goal, Situation, và Constraints cho mỗi task.
+* **Thiết kế hệ thống chịu lỗi:** Khi làm việc với LLM API, phải xây dựng cơ chế test kỹ lưỡng và handle các format sai lệch từ AI do tính không xác định của nó.
+* **Áp dụng Multi-Agent:** Đề xuất và thử nghiệm mô hình chia nhỏ các LLM Agents theo từng chức năng (như hội đồng) cho các task phức tạp tại công ty.
+* **Đề cao Security:** Luôn tích hợp kiểm tra bảo mật (API Key rotation, data filtering) trước khi đưa bất kỳ công cụ AI hoặc MCP nào vào môi trường production của doanh nghiệp.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia sự kiện **FCAJ Community Day** mang lại cho tôi rất nhiều góc nhìn sâu sắc về cả khía cạnh kỹ thuật lẫn kỹ năng sinh tồn trong ngành IT hiện nay. Một số trải nghiệm nổi bật:
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Cập nhật bức tranh thực tế về thị trường
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+* Những chia sẻ thẳng thắn từ anh Hưng giúp tôi nhận ra áp lực cũng như cơ hội khi AI đang thay đổi cách làm phần mềm.
+* Việc trang bị kiến thức nghiệp vụ và tự làm ra sản phẩm thực tế là chìa khóa để cạnh tranh.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+#### Góc nhìn từ môi trường Enterprise
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+* Rất ấn tượng với phần chia sẻ của chị Vy Lâm về cách ứng dụng AI trong ngân hàng.
+* Tôi nhận ra ở môi trường doanh nghiệp lớn, việc code cho AI chạy được chỉ là một phần nhỏ, phần lớn nỗ lực phải dành cho Security, Compliance và tính toán ROI.
+
+#### Kiến thức Technical sâu sắc
+
+* Việc hiểu được lý do tại sao AI sinh ra kết quả khác nhau dù set Temperature = 0 (từ anh Đức) giúp tôi gỡ bỏ được nhiều lầm tưởng về LLM.
+* Biết thêm các giải pháp tối ưu mạng và chi phí với Amazon CloudFront.
 
 #### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+
+* Đừng trì hoãn việc học hỏi và ứng dụng AI đúng cách, vì AI đang tiến hóa vô cùng nhanh.
+* Không nên phó mặc hoàn toàn cho AI mà thiếu đi sự kiểm soát, tư duy phản biện và kiến thức nền tảng vững chắc của một kỹ sư phần mềm.
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+
+* *(Thêm các hình ảnh của bạn tại đây)*
+
+> Tổng thể, FCAJ Community Day không chỉ là một sự kiện cập nhật công nghệ mà còn là nơi đánh thức tư duy, kết nối cộng đồng và định hướng rõ ràng hơn con đường phát triển sự nghiệp trong kỷ nguyên GenAI.
