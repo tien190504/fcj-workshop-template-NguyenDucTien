@@ -1,6 +1,6 @@
 baseURL = "https://tien190504.github.io/fcj-workshop-template-NguyenDucTien/"
-relativeURLs = false
-canonifyURLs = true
+relativeURLs = true
+canonifyURLs = false
 defaultContentLanguage = "en"
 
 # Change the default theme to be use when building the site with Hugo
