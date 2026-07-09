@@ -6,17 +6,14 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}  
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã đăng trên [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Ví dụ:
 
-###  [Blog 1 - SESSION POLICIES TRONG AMAZON EKS POD IDENTITY](3.1-Blog1/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+###  [Blog 1 - Workload Discovery on AWS](3.1-Blog1/)
+Bài viết này giới thiệu về Workload Discovery on AWS (trước đây là AWS Perspective) – một giải pháp đắc lực giúp bạn tự động thu thập inventory và visualize toàn bộ kiến trúc tài nguyên AWS đa account, đa region một cách trực quan dưới dạng biểu đồ tương tác.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+###  [Blog 2 - AWS Direct Connect + AWS Transit Gateway](3.2-Blog2/)
+Bài viết này chia sẻ mô hình kết nối hybrid tối ưu giữa mạng nội bộ on-premises và AWS Cloud bằng cách kết hợp AWS Direct Connect với AWS Transit Gateway, mang lại hiệu suất mạng ổn định, băng thông cao và đơn giản hóa việc quản lý routing.
 
-###  [Blog 3 - ...](3.3-Blog3/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+###  [Blog 3 - AWS DX – DXGW với AWS Transit Gateway Multi-Regions và AWS Public Peering](3.3-Blog3/)
+Bài viết này phân tích sâu hơn mô hình kết nối hybrid nâng cao, hỗ trợ Multi-Regions và AWS Public Peering nhằm tối ưu hóa traffic, tăng tính dự phòng (High Availability) và mở rộng quy mô linh hoạt cho doanh nghiệp lớn.

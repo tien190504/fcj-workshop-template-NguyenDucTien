@@ -1,31 +1,42 @@
 ---
-title: "Blog 2"
+title: "AWS Direct Connect + AWS Transit Gateway"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+Today, I want to share an extremely powerful and recommended connectivity pattern when building hybrid infrastructure between on-premises and AWS Cloud: **AWS Direct Connect + AWS Transit Gateway**.
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+According to official AWS documentation, when combining **AWS Direct Connect** with **AWS Transit Gateway** through a **Transit Virtual Interface (Transit VIF)** attachment to a **Direct Connect Gateway**, you can easily and effectively connect a private dedicated line from your local network to multiple regional centralized routers.
 
-Key points to know:
+### Why Should You Use This Solution?
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+* **Transit Gateway acts as a hub**: Each Transit Gateway acts as a network transit hub, helping interconnect multiple VPCs in the same Region. You only need to manage routing configuration in a single place instead of configuring each VPC individually.
+* **Private & dedicated connection**: Bypasses the public Internet, providing high reliability, low latency, and stable bandwidth.
+* **Economic & performance benefits**:
+    * Significantly reduces network costs compared to standard VPN solutions.
+    * Maximizes throughput (bandwidth).
+    * Offers a consistent network experience, suited for high-performance applications like large data migration, disaster recovery, or real-time applications.
+* **Easier management**:
+    * A single Direct Connect connection can serve multiple VPCs or VPNs in the same Region.
+    * Supports flexible prefix advertising between on-premises and AWS.
+    * Easily scales as your system grows.
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+---
 
-...Image...
+### Basic Architecture
 
-...Link...
+You will have:
+1. A **Transit Gateway**.
+2. A **Direct Connect Gateway**.
+3. An **Association** between them.
+4. A **Transit VIF** attached to the Direct Connect Gateway.
 
-...Guide...
+As a result, traffic from on-premises can flow through the dedicated connection and then be intelligently distributed by the Transit Gateway to the required VPCs. Very clean and easy to operate!
+
+This solution is particularly suitable for enterprises undergoing strong digital transformation, running multiple workloads on AWS, or requiring stable connectivity between traditional data centers and the cloud. I see many companies adopting this model to optimize costs and enhance security for hybrid infrastructure.
+
+![AWS Direct Connect + Transit Gateway Details](/images/3-BlogsPosted/image3.jpeg)
+
+* **Official Reference:** [AWS Whitepaper: AWS Direct Connect + AWS Transit Gateway](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect-aws-transit-gateway.html)
