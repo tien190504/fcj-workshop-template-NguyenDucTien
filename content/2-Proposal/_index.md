@@ -5,111 +5,90 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
-
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+## A Comprehensive AWS Cloud Solution for Secure, Scalable, and Automated Online Operations
 
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+This project delivers a high-performance, secure, and auto-scaling E-commerce web infrastructure designed for a premium fashion retail brand. Built entirely on AWS Cloud, the system is engineered to seamlessly handle thousands of concurrent online shoppers, automatically scaling compute capacity from 2 up to 15 EC2 instances during major promotional events (Flash Sales). By leveraging an AWS multi-tier architecture, the platform guarantees ultra-low latency shopping experiences, automated cart processing, and maximum data protection via Amazon Cognito and AWS WAF integration.
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+* **Current Challenges:** Traditional monolithic web hosting infrastructures for fashion stores frequently suffer from server crashes and network congestion during seasonal sales traffic spikes. Furthermore, they lack real-time cart analysis capabilities, rely on manual inventory adjustments, remain highly vulnerable to cyber-attacks (DDoS, SQL Injection), and incur high, fixed maintenance costs for physical servers even during off-peak months.
+* **The Solution:** The proposed platform implements a secure, decoupled Multi-Tier Architecture on AWS:
+    * **Edge & Security Tier:** Customers access the web storefront via **AWS CloudFront (CDN)** for rapid page loading by fetching static web elements from **Amazon S3**. This layer is heavily protected by **AWS WAF** to inspect and block malicious web requests.
+    * **Compute & Load Balancing Tier:** HTTP Requests transition through the **Internet Gateway** to an **Application Load Balancer (ALB)**, which evenly routes incoming traffic to **Amazon EC2** instances across multiple Availability Zones (AZs) inside Private Subnets to guarantee High Availability.
+    * **Data & Caching Tier:** Product details, transactional data, and user accounts are securely managed in a Multi-AZ **Amazon RDS** relational database cluster. Real-time session state and shopping cart actions are accelerated using **AWS ElastiCache (Redis)** for sub-millisecond read/write speeds.
+    * **Serverless Asynchronous Processing Tier:** New orders are safely pushed into an **AWS SQS** queue, triggering **AWS Lambda** functions to process purchases asynchronously without putting stress on the core web servers. Historical transactions and telemetry logs are dumped into **Amazon DynamoDB** and **Amazon S3** via **S3 Gateways**.
+* **Benefits and Return on Investment (ROI):**
+    * **Cost Efficiency:** Driven by Auto Scaling Groups (ASG), the business only pays for the active compute resources required at any given minute, dropping operational costs during late-night hours.
+    * **Higher Conversion Rates:** Blazing-fast website performance (<1s load time) powered by CloudFront and ElastiCache enhances user engagement and slashes cart abandonment rates.
+    * **Uncompromised Security:** Automatic mitigation of 99% of common web vulnerabilities and brute-force attempts at the network edge via WAF rules.
+    * **Payback Period:** ROI achieved within 3–6 months due to zero upfront physical hardware capital expenditures and a nationwide boost in automated digital sales.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
-
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+---
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+The platform enforces a highly available, fault-tolerant design on AWS, leveraging distinct Public and Private Subnets to completely isolate core data and compute resources from the open internet.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+**System Architecture Model**
+![](/images/mohinh.png)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+#### AWS Services Utilized
+* **AWS WAF & CloudFront:** Edge web security, malicious payload filtering, and global static/dynamic content delivery.
+* **Amazon VPC (Public/Private Subnets & NAT Gateways):** Internal isolated network topologies. NAT Gateways allow EC2 nodes inside Private Subnets to safely retrieve package updates without exposing their private IPs.
+* **Application Load Balancer (ALB) & EC2:** Traffic distribution and core application business logic execution.
+* **AWS ElastiCache:** Caching tier for instant shopping cart states and trending product items.
+* **Amazon RDS:** Primary relational database (handling user records, inventory tracking, and payment invoices).
+* **AWS SQS & AWS Lambda:** Serverless microservices to ingest and handle payment events asynchronously.
+* **Amazon DynamoDB & S3:** Highly scalable NoSQL engine for system event logging/browsing histories, and durable asset storage for high-definition product imagery.
+* **AWS CloudWatch & AWS SNS:** Comprehensive infrastructure metric monitoring (CPU, Memory, Network) coupled with instant administrative notification pipelines (Email/SMS Alerts).
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
-
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+---
 
 ### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+#### Implementation Phases
+1. **Phase 1: Architecture Topology & Database Schema Design (Month 1):** Mapping out precise VPC configurations, Security Group restrictions, IAM Roles, and defining relational database structures optimized for retail transactions.
+2. **Phase 2: Infrastructure as Code (IaC) Provisioning (Month 2):** Writing automated Terraform or AWS CDK scripts to easily instantiate the ALB, EC2 Auto Scaling environments, RDS instances, and CloudFront routing behaviors.
+3. **Phase 3: Backend Assembly & Serverless Integration (Month 2 - Month 3):** Hooking the web backend code into ElastiCache endpoints, establishing Lambda triggers to drain SQS queues, and structured log archiving into DynamoDB.
+4. **Phase 4: Load Testing & Production Go-Live (Month 3):** Simulating up to 10,000 concurrent shopping interactions using load-testing scripts to validate the automated scalability boundaries, finalizing WAF rule sets, and redirecting the production DNS.
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+#### Technical Requirements
+* **Web Application Stack:** Next.js/Node.js (or modern equivalent) containerized via Docker, deployed seamlessly onto EC2 instances via standardized Auto Scaling Launch Templates.
+* **Data Connectivity Performance:** Maintaining ultra-low communication latency (<5ms) between EC2 compute nodes, RDS instances, and ElastiCache backends by restricting communications to local AZ clusters and configuring dedicated VPC Endpoints (S3 Gateway).
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+---
+
+### 5. Roadmap & Milestones
+* **Month 1:** Complete granular system topology maps, initialize the master AWS Organizations account, and implement strict IAM least-privilege policies.
+* **Month 2:** Stand up the Staging environment containing the complete network architecture (VPC, EC2, RDS, Caching, SQS) and execute functional cart checkouts.
+* **Month 3:** Tie together all remaining serverless features (Lambda, DynamoDB logs), build out CloudWatch alert alarms linked to SNS notifications, complete stress tests, and transition the stack into live production.
+
+---
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+* **AWS CloudFront & WAF:** Dynamic consumption based on web data transfers (Estimated ~$15 - $30/month).
+* **Amazon EC2 (t3.medium instances) & ALB:** Running a baseline of 2 nodes across distinct AZs for permanent high availability (~$40 - $60/month).
+* **Amazon RDS (db.t3.small - Multi-AZ Deployments):** Safe, mirrored production database instances (~$35/month).
+* **AWS ElastiCache (Redis Caching Node):** Supercharged session caching (~$15/month).
+* **Amazon S3 & DynamoDB:** Asset hosting for fashion catalogs and NoSQL event tracking (~$10/month).
+* **AWS Lambda, SQS, CloudWatch & SNS:** Event-driven billing models (Mostly absorbed by the AWS Free Tier, scaling to less than $5/month under normal operation).
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+> **Total Estimated Monthly Cost:** ~$120 - $160 / month (Further cost optimizations can be achieved long-term by opting for EC2/RDS Reserved Instances or Savings Plans).
 
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+---
 
 ### 7. Risk Assessment
 #### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+* **Distributed Denial of Service (DDoS) / Brute Force Web Attacks:** High Impact, Medium Probability.
+* **Cart Synchronization Errors / Phantom Inventory Race Conditions:** High Impact, Low Probability.
+* **AWS Budget Overruns Due to Misconfigured Auto Scaling Loops:** Medium Impact, Medium Probability.
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+#### Mitigation Strategies & Contingency Planning
+* **DDoS Defenses:** Stopped at the outermost layer by marrying AWS WAF automated IP reputation filtering rules with CloudFront geo-blocking capabilities.
+* **Data Integrity:** Enforcing strict **AWS SQS FIFO (First-In-First-Out)** queue constraints ensuring user actions and checkouts are executed exactly in chronological order, mitigating double-checkout database locks.
+* **Cost Protections:** Establishing proactive **AWS Budgets** boundaries that automatically push warnings via **AWS SNS** alerts directly to the engineering team's communications channels the second monthly costs cross 80% of forecasted targets.
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+---
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+* An enterprise-grade, highly available online storefront maintaining a 99.99% application uptime SLA.
+* The capability to seamlessly endure a 5x spike in concurrent shoppers compared to the company’s heritage setup, while generating up to a 40% reduction in average running overhead by spinning down unneeded instances when web traffic drops.
+* A highly organized, centralized data engine (via S3 and DynamoDB logs) tracking historical buyer journeys, providing the brand with a foundation to run machine-learning product recommendation models and predictive fashion trend algorithms in subsequent business expansions.

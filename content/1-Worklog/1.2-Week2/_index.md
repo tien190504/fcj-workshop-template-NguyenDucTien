@@ -1,6 +1,6 @@
 ---
 title: "Week 2 Worklog"
-date: 2024-01-01
+date: 2026-04-27
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.2. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Study VPC theory: Subnets, Route Table, Internet Gateway, NAT Gateway <br> - Learn about firewalls inside a VPC: Security Group, Network ACLs, VPC Resource Map <br> - Create VPC `ASG` (`10.10.0.0/16`), 4 subnets and an Internet Gateway | 04/27/2026 | 04/27/2026 | <https://000003.awsstudygroup.com/vi/> |
-| 3   | - Create public/private Route Tables, add route `0.0.0.0/0` → IGW <br> - Attach subnet associations to each route table <br> - Create 3 layered Security Groups <br> - Enable VPC Flow Logs and inspect log streams on CloudWatch | 04/28/2026 | 04/28/2026 | <https://000003.awsstudygroup.com/vi/> |
-| 4   | - Launch EC2 Public and EC2 Private <br> - SSH into EC2 Public, test internet connectivity and ping EC2 Private <br> - Chain SSH from EC2 Public into EC2 Private using the key pair <br> - Allocate an Elastic IP, create a NAT Gateway to give the private subnet outbound internet access | 04/29/2026 | 04/29/2026 | <https://000003.awsstudygroup.com/vi/> |
-| 5   | - Analyze the network path with Reachability Analyzer <br> - Create an EC2 Instance Connect Endpoint in the private subnet <br> - Connect to EC2 Private directly from the Console via the EIC Endpoint (no bastion required) | 04/30/2026 | 04/30/2026 | <https://000003.awsstudygroup.com/vi/> |
-| 6   | - Build the simulated on-premise environment: VPC `ASG VPN`, subnet, IGW, SG and an EC2 instance acting as the Customer Gateway <br> - Create the Virtual Private Gateway, Customer Gateway and VPN Connection <br> - Enable Route Propagation on the public/private route tables | 05/01/2026 | 05/01/2026 | <https://000003.awsstudygroup.com/vi/> |
+| 2   | - Study VPC theory: Subnets, Route Table, Internet Gateway, NAT Gateway <br> - Learn about firewalls inside a VPC: Security Group, Network ACLs, VPC Resource Map <br> - Create VPC `ASG` (`10.10.0.0/16`), 4 subnets and an Internet Gateway | 27/04/2026 | 27/04/2026 | <https://000003.awsstudygroup.com/vi/> |
+| 3   | - Create public/private Route Tables, add route `0.0.0.0/0` → IGW <br> - Attach subnet associations to each route table <br> - Create 3 layered Security Groups <br> - Enable VPC Flow Logs and inspect log streams on CloudWatch | 28/04/2026 | 28/04/2026 | <https://000003.awsstudygroup.com/vi/> |
+| 4   | - Launch EC2 Public and EC2 Private <br> - SSH into EC2 Public, test internet connectivity and ping EC2 Private <br> - Chain SSH from EC2 Public into EC2 Private using the key pair <br> - Allocate an Elastic IP, create a NAT Gateway to give the private subnet outbound internet access | 29/04/2026 | 29/04/2026 | <https://000003.awsstudygroup.com/vi/> |
+| 5   | - Analyze the network path with Reachability Analyzer <br> - Create an EC2 Instance Connect Endpoint in the private subnet <br> - Connect to EC2 Private directly from the Console via the EIC Endpoint (no bastion required) | 30/04/2026 | 30/04/2026 | <https://000003.awsstudygroup.com/vi/> |
+| 6   | - Build the simulated on-premise environment: VPC `ASG VPN`, subnet, IGW, SG and an EC2 instance acting as the Customer Gateway <br> - Create the Virtual Private Gateway, Customer Gateway and VPN Connection <br> - Enable Route Propagation on the public/private route tables | 01/05/2026 | 01/05/2026 | <https://000003.awsstudygroup.com/vi/> |
 
 ### Work Details:
 

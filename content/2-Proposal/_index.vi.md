@@ -5,104 +5,91 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+## Giải pháp Điện toán Đám mây AWS Toàn diện cho Nền tảng Bán lẻ Trực tuyến Tự động và Bảo mật
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+### 1. Tóm tắt điều hành
+Dự án nhằm xây dựng một hệ thống Web E-commerce hiệu năng cao, bảo mật và có khả năng tự động mở rộng cho chuỗi cửa hàng shop thời trang. Hệ thống ban đầu được thiết kế để xử lý ổn định lưu lượng truy cập từ khách hàng mua sắm trực tuyến, có khả năng tự động co giãn (Auto Scaling) từ 2 lên đến 10–15 máy chủ EC2 trong các đợt khuyến mãi lớn (Flash Sale). Hệ thống tận dụng tối đa hạ tầng AWS Cloud để cung cấp trải nghiệm mua sắm thời gian thực không độ trễ, phân tích giỏ hàng tự động, đồng thời bảo mật tuyệt đối dữ liệu người dùng và thanh toán nhờ tích hợp Amazon Cognito và AWS WAF.
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+### 2. Tuyên bố vấn đề
+* **Vấn đề hiện tại:** Hệ thống quản lý cửa hàng thời trang truyền thống hoặc các web hosting đơn lẻ thường bị sập nguồn/nghẽn mạng khi có lượng truy cập đột biến vào các mùa giảm giá. Không có khả năng lưu trữ và phân tích hành vi giỏ hàng theo thời gian thực, quản lý kho hàng thủ công, dễ bị tấn công mạng (DDoS, SQL Injection) và chi phí vận hành máy chủ vật lý cố định quá tốn kém ngay cả trong những tháng thấp điểm.
+* **Giải pháp:** Nền tảng triển khai một kiến trúc đa tầng (Multi-Tier Architecture) phân tách rõ ràng trên AWS:
+    * **Tầng Giao diện & Bảo mật mạng:** Khách hàng truy cập thông qua **AWS CloudFront (CDN)** giúp tối ưu tốc độ tải trang bằng cách fetch dữ liệu tĩnh từ **Amazon S3**, được bảo vệ nghiêm ngặt bởi **AWS WAF** để kiểm tra và chặn các truy cập độc hại.
+    * **Tầng Xử lý & Cân bằng tải:** Yêu cầu (HTTP Requests) đi qua **Internet Gateway** đến bộ cân bằng tải **Application Load Balancer (ALB)**, phân phối đều traffic đến các máy chủ **Amazon EC2** đặt trong các Private Subnet thuộc các Availability Zone (AZ) khác nhau để đảm bảo tính sẵn sàng cao.
+    * **Tầng Dữ liệu & Caching:** Toàn bộ thông tin sản phẩm, đơn hàng và khách hàng lưu trữ tại cụm **AWS RDS** (Cơ sở dữ liệu quan hệ) có cơ chế Multi-AZ replication. Trạng thái phiên làm việc (Session) và giỏ hàng (Cart) được tối ưu tốc độ đọc/ghi nhờ **AWS ElastiCache (Redis)**.
+    * **Tầng Xử lý Bất đồng bộ & Phân tích Đơn hàng (Serverless):** Đơn hàng mới sẽ được đẩy vào hàng đợi **AWS SQS**, kích hoạt **AWS Lambda** để xử lý đơn hàng tự động mà không làm nghẽn hệ thống chính. Dữ liệu lịch sử đơn hàng và log hệ thống được ghi nhận vào **Amazon DynamoDB** và **Amazon S3** thông qua **S3 Gateway**.
+* **Lợi ích và hoàn vốn đầu tư (ROI):**
+    * **Tối ưu hóa chi phí:** Nhờ tính năng Auto Scaling Group (ASG), hệ thống chỉ trả tiền cho lượng tài nguyên compute thực tế sử dụng. Chi phí vận hành tự động giảm tối đa vào giờ thấp điểm.
+    * **Tăng tỷ lệ chuyển đổi:** Website tải nhanh <1s nhờ CloudFront và ElastiCache giúp giữ chân khách hàng mua sắm, giảm tỷ lệ bỏ rơi giỏ hàng.
+    * **An toàn tuyệt đối:** Tự động phát hiện và chặn đứng 99% các cuộc tấn công mạng phổ biến thông qua WAF.
+    * **Thời gian hoàn vốn:** Ước tính từ 3–6 tháng nhờ tối ưu chi phí phần cứng vật lý và gia tăng doanh số bán hàng trực tuyến toàn quốc.
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+---
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+### 3. Kiến trúc giải pháp
+Nền tảng áp dụng kiến trúc chuẩn Highly Available & Fault Tolerant trên AWS, chia làm các phân vùng Public và Private Subnet nghiêm ngặt nhằm cô lập tài nguyên hệ thống core.
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+**Mô hình kiến trúc hệ thống**
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+![](/images/mohinh.png)
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+#### Dịch vụ AWS sử dụng
+* **AWS WAF & CloudFront:** Lọc mã độc, chống DDoS và phân phối nội dung tĩnh/động toàn cầu.
+* **Amazon VPC (Public/Private Subnets & NAT Gateway):** Cách ly mạng nội bộ, NAT Gateway cho phép EC2 trong Private Subnet tải cập nhật bảo mật mà không bị lộ IP ra Internet.
+* **Application Load Balancer (ALB) & EC2:** Tự động cân bằng tải và xử lý logic ứng dụng web bán hàng.
+* **AWS ElastiCache:** Tăng tốc truy vấn giỏ hàng và dữ liệu đệm sản phẩm hot.
+* **Amazon RDS:** Hệ quản trị cơ sở dữ liệu quan hệ chính (quản lý người dùng, tồn kho, hóa đơn).
+* **AWS SQS & AWS Lambda:** Tiếp nhận và xử lý sự kiện thanh toán/đơn hàng theo cơ chế serverless bất đồng bộ.
+* **Amazon DynamoDB & S3:** Lưu trữ cơ sở dữ liệu NoSQL (log sự kiện, lịch sử duyệt đồ) và tài nguyên hình ảnh sản phẩm (Media asset).
+* **AWS CloudWatch & AWS SNS:** Giám sát hiệu năng hệ thống (CPU, RAM, Network) và tự động gửi cảnh báo qua SMS/Email khi có sự cố.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+---
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+### 4. Triển khai kỹ thuật
+#### Các giai đoạn triển khai
+1. **Giai đoạn 1: Thiết kế Topology và Database Schema (Tháng 1):** Thiết kế sơ đồ mạng VPC chi tiết, cấu hình bảo mật Security Groups, IAM Roles và chuẩn hóa cơ sở dữ liệu quan hệ cho Shop thời trang.
+2. **Giai đoạn 2: Hiện thực hóa Hạ tầng (IaC) (Tháng 2):** Viết script Terraform/AWS CDK để tự động khởi tạo ALB, EC2 Auto Scaling, RDS và các chính sách định tuyến CloudFront.
+3. **Giai đoạn 3: Phát triển Backend & Tích hợp Serverless (Tháng 2 - Tháng 3):** Kết nối mã nguồn web với ElastiCache, viết hàm Lambda xử lý luồng đơn hàng từ SQS và ghi log vào DynamoDB.
+4. **Giai đoạn 4: Kiểm thử chịu tải (Load Testing) & Triển khai (Tháng 3):** Giả lập 10,000 người dùng cùng lúc bằng các công cụ test script để kiểm tra khả năng co giãn của hệ thống, sau đó cấu hình WAF và Go-Live.
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+#### Yêu cầu kỹ thuật
+* **Hạ tầng Web:** Source code (Next.js/Node.js hoặc tương đương) đóng gói Docker Container chạy trên EC2 hoặc tích hợp trực tiếp vào Launch Template của Auto Scaling Group.
+* **Kết nối Dữ liệu:** Đảm bảo độ trễ kết nối từ EC2 đến RDS và ElastiCache thấp nhất (<5ms) nhờ đặt cùng một Availability Zone cục bộ hoặc thiết lập VPC Endpoints (S3 Gateway).
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+---
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+### 5. Lộ trình & Mốc triển khai
+* **Tháng 1:** Hoàn thiện bản vẽ kiến trúc chi tiết, thiết lập tài khoản AWS Organization và phân quyền IAM.
+* **Tháng 2:** Triển khai môi trường Staging (VPC, EC2, RDS, Caching, SQS). Khởi tạo giỏ hàng thử nghiệm.
+* **Tháng 3:** Hoàn thiện tích hợp luồng Serverless (Lambda, DynamoDB), cấu hình hệ thống giám sát CloudWatch Alarms và SNS. Test tải toàn diện và chuyển giao hệ thống sang môi trường Production.
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+---
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+### 6. Ước tính ngân sách
+* **AWS CloudFront & WAF:** Tùy thuộc lưu lượng dữ liệu (Ước tính ~$15 - $30/tháng).
+* **Amazon EC2 (t3.medium) & ALB:** Chạy tối thiểu 2 node duy trì tính sẵn sàng cao (~$40 - $60/tháng).
+* **Amazon RDS (db.t3.small - Multi-AZ):** Lưu trữ dữ liệu hệ thống cốt lõi an toàn (~$35/tháng).
+* **AWS ElastiCache (Redis):** Tăng tốc giỏ hàng (~$15/tháng).
+* **Amazon S3 & DynamoDB:** Lưu trữ ảnh sản phẩm độ phân giải cao và log đơn hàng (~$10/tháng).
+* **AWS Lambda, SQS, CloudWatch & SNS:** Chi phí theo lượng tiêu thụ thực tế (Hầu hết nằm trong Free Tier hoặc chi phí dưới $5/tháng).
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+> **Tổng chi phí ước tính:** ~$120 - $160 / tháng (Có thể tối ưu sâu hơn bằng cơ chế Reserved Instances hoặc Savings Plans cho EC2/RDS).
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+---
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+### 7. Đánh giá rủi ro
+#### Ma trận rủi ro
+* **Tấn công từ chối dịch vụ (DDoS/Brute Force):** Ảnh hưởng cao, xác suất trung bình.
+* **Xảy ra lỗi đồng bộ giỏ hàng/Hết hàng ảo (Race Condition):** Ảnh hưởng cao, xác suất thấp.
+* **Vượt ngân sách AWS do cấu hình sai vòng lặp Auto Scaling:** Ảnh hưởng trung bình, xác suất trung bình.
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+#### Chiến lược giảm thiểu & Kế hoạch dự phòng
+* **Chống DDoS:** Đã được chặn từ lớp ngoài cùng bằng cách kết hợp AWS WAF chặn IP xấu tự động và CloudFront geo-blocking.
+* **Đồng bộ dữ liệu:** Sử dụng cơ chế hàng đợi AWS SQS bảo đảm nguyên tắc FIFO (First-In-First-Out) để xử lý đơn hàng theo đúng thứ tự thời gian, tránh lỗi trùng lặp giỏ hàng.
+* **Kiểm soát chi phí:** Cấu hình **AWS Budgets** tự động gửi thông báo qua **AWS SNS** đến email quản trị viên khi chi phí thực tế chạm ngưỡng 80% ngân sách dự kiến.
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+---
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
-
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+### 8. Kết quả kỳ vọng
+* Website hoạt động ổn định với tỷ lệ Uptime đạt 99.99%.
+* Khả năng chịu tải tăng gấp 5 lần so với hệ thống cũ nhưng chi phí tối ưu hơn 40% nhờ tính năng tự động tắt bớt tài nguyên khi vắng khách.
+* Hệ thống dữ liệu hành vi mua sắm được lưu trữ tập trung tại S3/DynamoDB, sẵn sàng làm nguồn tài nguyên quý giá cho phòng marketing phân tích xu hướng thời trang và tích hợp các mô hình AI gợi ý sản phẩm (Recommendation System) trong tương lai.
