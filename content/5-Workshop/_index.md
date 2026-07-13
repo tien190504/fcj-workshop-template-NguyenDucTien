@@ -1,31 +1,43 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-12
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-# Secure Hybrid Access to S3 using VPC Endpoints
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+This document is a worklog detailing the AWS architecture deployed for **Maison Édition** — a fashion storefront whose frontend is served from S3 + CloudFront and whose backend runs on EC2 behind an Application Load Balancer with an RDS PostgreSQL database. On top of that baseline, the system adds six capabilities, each closing a specific gap in the baseline: S3 Media storage (a dedicated place to store and serve product images instead of the app server), a Redis cache (cuts read load on RDS for hot catalog data), asynchronous order processing with SQS + Lambda (keeps checkout responsive instead of blocking on email/logging), an activity log on DynamoDB (an audit trail of user actions), monitoring with CloudWatch + SNS (early warning when something breaks), and a WAF at the edge (blocks attacks before they reach the application).
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+Each chapter records what a service does and how it was inspected and tested directly on the AWS Console.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+```
+User Request
+    │
+    ▼
+AWS WAF ──── Blocks SQLi/XSS, rate limit 2000 req/5min/IP
+    │
+    ▼
+AWS CloudFront
+    ├── /api/*   ──────────────────────────────► ALB (HTTP:80) ──► EC2 x2 (Spring Boot)
+    ├── /media/* ──► S3 Media Bucket (product images)                  │
+    └── /*       ──► S3 FE Bucket (React build)                        ├──► RDS PostgreSQL
+                                                                       ├──► ElastiCache Redis (cache)
+                                                                       ├──► S3 (image upload, via Gateway Endpoint)
+                                                                       └──► SQS ──► Lambda ──► SES (email) + DynamoDB (activity log)
+
+CloudWatch (metrics + logs) ──► SNS ──► Email alerts
+```
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Architecture overview](5.1-Architecture-Overview/)
+2. [Prerequisites](5.2-Preparation/)
+3. [S3 Media + Gateway Endpoint](5.3-S3-Media-Gateway-Endpoint/)
+4. [ElastiCache Redis](5.4-ElastiCache-Redis/)
+5. [SQS + Lambda — order processing](5.5-SQS-Lambda-Order/)
+6. [DynamoDB — Activity Log](5.6-DynamoDB-Activity-Log/)
+7. [CloudWatch + SNS — Monitoring](5.7-CloudWatch-SNS/)
+8. [WAF](5.8-WAF/)
+9. [Cost & Cleanup](5.9-Cost-Cleanup/)

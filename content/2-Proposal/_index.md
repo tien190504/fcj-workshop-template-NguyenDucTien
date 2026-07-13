@@ -8,7 +8,7 @@ pre: " <b> 2. </b> "
 ## A Comprehensive AWS Cloud Solution for Secure, Scalable, and Automated Online Operations
 
 ### 1. Executive Summary
-This project delivers a high-performance, secure, and auto-scaling E-commerce web infrastructure designed for a premium fashion retail brand. Built entirely on AWS Cloud, the system is engineered to seamlessly handle thousands of concurrent online shoppers, automatically scaling compute capacity from 2 up to 15 EC2 instances during major promotional events (Flash Sales). By leveraging an AWS multi-tier architecture, the platform guarantees ultra-low latency shopping experiences, automated cart processing, and maximum data protection via Amazon Cognito and AWS WAF integration.
+This project delivers a high-performance, secure, and auto-scaling E-commerce web infrastructure designed for a premium fashion retail brand. Built entirely on AWS Cloud, the system is engineered to seamlessly handle thousands of concurrent online shoppers, automatically scaling compute capacity from 2 up to 4 EC2 instances via an Auto Scaling Group with CPU-based target tracking (60% average utilization) during traffic spikes. By leveraging an AWS multi-tier architecture, the platform guarantees ultra-low latency shopping experiences, automated cart processing, and maximum data protection via Amazon Cognito and AWS WAF integration.
 
 ### 2. Problem Statement
 * **Current Challenges:** Traditional monolithic web hosting infrastructures for fashion stores frequently suffer from server crashes and network congestion during seasonal sales traffic spikes. Furthermore, they lack real-time cart analysis capabilities, rely on manual inventory adjustments, remain highly vulnerable to cyber-attacks (DDoS, SQL Injection), and incur high, fixed maintenance costs for physical servers even during off-peak months.
@@ -29,7 +29,7 @@ This project delivers a high-performance, secure, and auto-scaling E-commerce we
 The platform enforces a highly available, fault-tolerant design on AWS, leveraging distinct Public and Private Subnets to completely isolate core data and compute resources from the open internet.
 
 **System Architecture Model**
-![](/images/mohinh.png)
+![E-commerce System Architecture](/images/2-Proposal/mohinh.png)
 
 #### AWS Services Utilized
 * **AWS WAF & CloudFront:** Edge web security, malicious payload filtering, and global static/dynamic content delivery.
@@ -51,7 +51,7 @@ The platform enforces a highly available, fault-tolerant design on AWS, leveragi
 4. **Phase 4: Load Testing & Production Go-Live (Month 3):** Simulating up to 10,000 concurrent shopping interactions using load-testing scripts to validate the automated scalability boundaries, finalizing WAF rule sets, and redirecting the production DNS.
 
 #### Technical Requirements
-* **Web Application Stack:** Next.js/Node.js (or modern equivalent) containerized via Docker, deployed seamlessly onto EC2 instances via standardized Auto Scaling Launch Templates.
+* **Web Application Stack:** Spring Boot (Java) containerized via Docker, deployed seamlessly onto EC2 instances via standardized Auto Scaling Launch Templates.
 * **Data Connectivity Performance:** Maintaining ultra-low communication latency (<5ms) between EC2 compute nodes, RDS instances, and ElastiCache backends by restricting communications to local AZ clusters and configuring dedicated VPC Endpoints (S3 Gateway).
 
 ---
@@ -64,14 +64,14 @@ The platform enforces a highly available, fault-tolerant design on AWS, leveragi
 ---
 
 ### 6. Budget Estimation
-* **AWS CloudFront & WAF:** Dynamic consumption based on web data transfers (Estimated ~$15 - $30/month).
-* **Amazon EC2 (t3.medium instances) & ALB:** Running a baseline of 2 nodes across distinct AZs for permanent high availability (~$40 - $60/month).
-* **Amazon RDS (db.t3.small - Multi-AZ Deployments):** Safe, mirrored production database instances (~$35/month).
-* **AWS ElastiCache (Redis Caching Node):** Supercharged session caching (~$15/month).
-* **Amazon S3 & DynamoDB:** Asset hosting for fashion catalogs and NoSQL event tracking (~$10/month).
-* **AWS Lambda, SQS, CloudWatch & SNS:** Event-driven billing models (Mostly absorbed by the AWS Free Tier, scaling to less than $5/month under normal operation).
+* **NAT Gateway (x2, one per AZ):** The single largest cost driver, covering outbound internet access for EC2 instances in the private subnets (~$85 - $90/month).
+* **Amazon EC2 (t3.micro instances, Auto Scaling Group 2-4) & ALB:** Baseline of 2 nodes across distinct AZs for high availability, auto-scaling up to 4 under sustained CPU load (~$40 - $60/month depending on scale).
+* **Amazon RDS (db.t3.micro - Multi-AZ Deployment):** Safe, mirrored production database instance (~$35/month).
+* **AWS ElastiCache (Redis, cache.t3.micro):** Catalog caching node (~$13 - $15/month).
+* **AWS WAF:** Web ACL plus 4 managed rule groups protecting the edge (~$9/month).
+* **Amazon S3, CloudFront, DynamoDB, SQS, Lambda, SES, SNS & CloudWatch:** Event-driven / usage-based billing, mostly absorbed by the AWS Free Tier (~$2 - $3/month).
 
-> **Total Estimated Monthly Cost:** ~$120 - $160 / month (Further cost optimizations can be achieved long-term by opting for EC2/RDS Reserved Instances or Savings Plans).
+> **Total Estimated Monthly Cost:** ~$184 - $212/month (baseline ~$184-192 at 2 EC2 instances, rising toward $212 only during the hours the Auto Scaling Group actually scales out to its max of 4 — not a flat monthly addition. Further cost optimizations can be achieved by opting for EC2/RDS Reserved Instances or Savings Plans, or by reducing to a single NAT Gateway).
 
 ---
 
@@ -82,8 +82,8 @@ The platform enforces a highly available, fault-tolerant design on AWS, leveragi
 * **AWS Budget Overruns Due to Misconfigured Auto Scaling Loops:** Medium Impact, Medium Probability.
 
 #### Mitigation Strategies & Contingency Planning
-* **DDoS Defenses:** Stopped at the outermost layer by marrying AWS WAF automated IP reputation filtering rules with CloudFront geo-blocking capabilities.
-* **Data Integrity:** Enforcing strict **AWS SQS FIFO (First-In-First-Out)** queue constraints ensuring user actions and checkouts are executed exactly in chronological order, mitigating double-checkout database locks.
+* **DDoS Defenses:** Stopped at the outermost layer by AWS WAF managed rule groups (Common Rule Set, SQL Injection, Known Bad Inputs) combined with a rate-based rule blocking any single IP that exceeds 2,000 requests per 5 minutes.
+* **Data Integrity:** Order records are written synchronously to RDS at checkout — before any queue is involved — so a database transaction, not queue ordering, prevents double-checkout. A standard **AWS SQS** queue then decouples email/logging from the checkout response, with a dead-letter queue (max 3 delivery attempts) isolating failed messages instead of dropping them silently.
 * **Cost Protections:** Establishing proactive **AWS Budgets** boundaries that automatically push warnings via **AWS SNS** alerts directly to the engineering team's communications channels the second monthly costs cross 80% of forecasted targets.
 
 ---

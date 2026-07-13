@@ -1,33 +1,43 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-12
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
-
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Tài liệu này là nhật ký (worklog) ghi chép lại quá trình triển khai kiến trúc AWS cho **Maison Édition** — một storefront thời trang. Phần giao diện được phục vụ từ S3 + CloudFront, phần xử lý chạy trên EC2 sau Application Load Balancer với cơ sở dữ liệu RDS PostgreSQL. Ngoài phần nền tảng đó, hệ thống bổ sung sáu chức năng, mỗi chức năng giải quyết một khoảng trống cụ thể: S3 Media (nơi lưu và phục vụ ảnh sản phẩm riêng, thay vì để app server xử lý), cache Redis (giảm tải đọc lên RDS cho dữ liệu catalog truy cập nhiều), xử lý đơn hàng bất đồng bộ với SQS + Lambda (giữ luồng checkout phản hồi nhanh, không phải chờ gửi email/ghi log), ghi lịch sử hoạt động trên DynamoDB (audit trail thao tác người dùng), giám sát bằng CloudWatch + SNS (cảnh báo sớm khi có sự cố), và tường lửa WAF ở lớp ngoài cùng (chặn tấn công trước khi chạm tới ứng dụng).
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Mỗi chương ghi nhận vai trò của từng dịch vụ và cách dịch vụ đó được cấu hình, kiểm tra trực tiếp trên AWS Console.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+```
+User Request
+    │
+    ▼
+AWS WAF ──── Chặn SQLi/XSS, rate limit 2000 req/5min/IP
+    │
+    ▼
+AWS CloudFront
+    ├── /api/*   ──────────────────────────────► ALB (HTTP:80) ──► EC2 x2 (Spring Boot)
+    ├── /media/* ──► S3 Media Bucket (ảnh sản phẩm)                    │
+    └── /*       ──► S3 FE Bucket (React build)                        ├──► RDS PostgreSQL
+                                                                       ├──► ElastiCache Redis (cache)
+                                                                       ├──► S3 (upload ảnh, qua Gateway Endpoint)
+                                                                       └──► SQS ──► Lambda ──► SES (email) + DynamoDB (activity log)
+
+CloudWatch (metrics + logs) ──► SNS ──► Email cảnh báo
+```
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Tổng quan kiến trúc](5.1-Architecture-Overview/)
+2. [Chuẩn bị](5.2-Preparation/)
+3. [S3 Media + Gateway Endpoint](5.3-S3-Media-Gateway-Endpoint/)
+4. [ElastiCache Redis](5.4-ElastiCache-Redis/)
+5. [SQS + Lambda — xử lý đơn hàng](5.5-SQS-Lambda-Order/)
+6. [DynamoDB — Activity Log](5.6-DynamoDB-Activity-Log/)
+7. [CloudWatch + SNS — Monitoring](5.7-CloudWatch-SNS/)
+8. [WAF](5.8-WAF/)
+9. [Chi phí & Cleanup](5.9-Cost-Cleanup/)

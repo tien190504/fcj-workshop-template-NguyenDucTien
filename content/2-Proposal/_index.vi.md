@@ -8,7 +8,7 @@ pre: " <b> 2. </b> "
 ## Giải pháp Điện toán Đám mây AWS Toàn diện cho Nền tảng Bán lẻ Trực tuyến Tự động và Bảo mật
 
 ### 1. Tóm tắt điều hành
-Dự án nhằm xây dựng một hệ thống Web E-commerce hiệu năng cao, bảo mật và có khả năng tự động mở rộng cho chuỗi cửa hàng shop thời trang. Hệ thống ban đầu được thiết kế để xử lý ổn định lưu lượng truy cập từ khách hàng mua sắm trực tuyến, có khả năng tự động co giãn (Auto Scaling) từ 2 lên đến 10–15 máy chủ EC2 trong các đợt khuyến mãi lớn (Flash Sale). Hệ thống tận dụng tối đa hạ tầng AWS Cloud để cung cấp trải nghiệm mua sắm thời gian thực không độ trễ, phân tích giỏ hàng tự động, đồng thời bảo mật tuyệt đối dữ liệu người dùng và thanh toán nhờ tích hợp Amazon Cognito và AWS WAF.
+Dự án nhằm xây dựng một hệ thống Web E-commerce hiệu năng cao, bảo mật và có khả năng tự động mở rộng cho chuỗi cửa hàng shop thời trang. Hệ thống ban đầu được thiết kế để xử lý ổn định lưu lượng truy cập từ khách hàng mua sắm trực tuyến, có khả năng tự động co giãn (Auto Scaling Group) từ 2 lên đến 4 máy chủ EC2 dựa trên ngưỡng CPU trung bình (target tracking 60%) khi traffic tăng đột biến. Hệ thống tận dụng tối đa hạ tầng AWS Cloud để cung cấp trải nghiệm mua sắm thời gian thực không độ trễ, phân tích giỏ hàng tự động, đồng thời bảo mật tuyệt đối dữ liệu người dùng và thanh toán nhờ tích hợp Amazon Cognito và AWS WAF.
 
 ### 2. Tuyên bố vấn đề
 * **Vấn đề hiện tại:** Hệ thống quản lý cửa hàng thời trang truyền thống hoặc các web hosting đơn lẻ thường bị sập nguồn/nghẽn mạng khi có lượng truy cập đột biến vào các mùa giảm giá. Không có khả năng lưu trữ và phân tích hành vi giỏ hàng theo thời gian thực, quản lý kho hàng thủ công, dễ bị tấn công mạng (DDoS, SQL Injection) và chi phí vận hành máy chủ vật lý cố định quá tốn kém ngay cả trong những tháng thấp điểm.
@@ -30,7 +30,7 @@ Nền tảng áp dụng kiến trúc chuẩn Highly Available & Fault Tolerant t
 
 **Mô hình kiến trúc hệ thống**
 
-![](/images/mohinh.png)
+![E-commerce System Architecture](/images/2-Proposal/mohinh.png)
 
 #### Dịch vụ AWS sử dụng
 * **AWS WAF & CloudFront:** Lọc mã độc, chống DDoS và phân phối nội dung tĩnh/động toàn cầu.
@@ -52,7 +52,7 @@ Nền tảng áp dụng kiến trúc chuẩn Highly Available & Fault Tolerant t
 4. **Giai đoạn 4: Kiểm thử chịu tải (Load Testing) & Triển khai (Tháng 3):** Giả lập 10,000 người dùng cùng lúc bằng các công cụ test script để kiểm tra khả năng co giãn của hệ thống, sau đó cấu hình WAF và Go-Live.
 
 #### Yêu cầu kỹ thuật
-* **Hạ tầng Web:** Source code (Next.js/Node.js hoặc tương đương) đóng gói Docker Container chạy trên EC2 hoặc tích hợp trực tiếp vào Launch Template của Auto Scaling Group.
+* **Hạ tầng Web:** Source code (Spring Boot/Java) đóng gói Docker Container chạy trên EC2 hoặc tích hợp trực tiếp vào Launch Template của Auto Scaling Group.
 * **Kết nối Dữ liệu:** Đảm bảo độ trễ kết nối từ EC2 đến RDS và ElastiCache thấp nhất (<5ms) nhờ đặt cùng một Availability Zone cục bộ hoặc thiết lập VPC Endpoints (S3 Gateway).
 
 ---
@@ -65,14 +65,14 @@ Nền tảng áp dụng kiến trúc chuẩn Highly Available & Fault Tolerant t
 ---
 
 ### 6. Ước tính ngân sách
-* **AWS CloudFront & WAF:** Tùy thuộc lưu lượng dữ liệu (Ước tính ~$15 - $30/tháng).
-* **Amazon EC2 (t3.medium) & ALB:** Chạy tối thiểu 2 node duy trì tính sẵn sàng cao (~$40 - $60/tháng).
-* **Amazon RDS (db.t3.small - Multi-AZ):** Lưu trữ dữ liệu hệ thống cốt lõi an toàn (~$35/tháng).
-* **AWS ElastiCache (Redis):** Tăng tốc giỏ hàng (~$15/tháng).
-* **Amazon S3 & DynamoDB:** Lưu trữ ảnh sản phẩm độ phân giải cao và log đơn hàng (~$10/tháng).
-* **AWS Lambda, SQS, CloudWatch & SNS:** Chi phí theo lượng tiêu thụ thực tế (Hầu hết nằm trong Free Tier hoặc chi phí dưới $5/tháng).
+* **NAT Gateway (x2, 1 mỗi AZ):** Khoản chi phí lớn nhất, phục vụ traffic ra internet của EC2 trong private subnet (~$85 - $90/tháng).
+* **Amazon EC2 (t3.micro, Auto Scaling Group 2-4) & ALB:** Baseline 2 node duy trì tính sẵn sàng cao, tự scale lên tới 4 khi CPU tải cao kéo dài (~$40 - $60/tháng tùy mức scale).
+* **Amazon RDS (db.t3.micro - Multi-AZ):** Lưu trữ dữ liệu hệ thống cốt lõi an toàn (~$35/tháng).
+* **AWS ElastiCache (Redis, cache.t3.micro):** Cache dữ liệu catalog (~$13 - $15/tháng).
+* **AWS WAF:** Web ACL và 4 rule quản lý bảo vệ lớp ngoài (~$9/tháng).
+* **Amazon S3, CloudFront, DynamoDB, SQS, Lambda, SES, SNS & CloudWatch:** Chi phí theo lượng tiêu thụ thực tế, hầu hết nằm trong Free Tier (~$2 - $3/tháng).
 
-> **Tổng chi phí ước tính:** ~$120 - $160 / tháng (Có thể tối ưu sâu hơn bằng cơ chế Reserved Instances hoặc Savings Plans cho EC2/RDS).
+> **Tổng chi phí ước tính:** ~$184 - $212/tháng (baseline ~$184-192 khi chạy 2 EC2; tăng dần tới $212 chỉ trong những giờ Auto Scaling Group thực sự scale-out lên mức tối đa 4 — không cộng cố định vào hóa đơn. Có thể tối ưu sâu hơn bằng Reserved Instances hoặc Savings Plans cho EC2/RDS, hoặc giảm còn 1 NAT Gateway).
 
 ---
 
@@ -83,8 +83,8 @@ Nền tảng áp dụng kiến trúc chuẩn Highly Available & Fault Tolerant t
 * **Vượt ngân sách AWS do cấu hình sai vòng lặp Auto Scaling:** Ảnh hưởng trung bình, xác suất trung bình.
 
 #### Chiến lược giảm thiểu & Kế hoạch dự phòng
-* **Chống DDoS:** Đã được chặn từ lớp ngoài cùng bằng cách kết hợp AWS WAF chặn IP xấu tự động và CloudFront geo-blocking.
-* **Đồng bộ dữ liệu:** Sử dụng cơ chế hàng đợi AWS SQS bảo đảm nguyên tắc FIFO (First-In-First-Out) để xử lý đơn hàng theo đúng thứ tự thời gian, tránh lỗi trùng lặp giỏ hàng.
+* **Chống DDoS:** Chặn từ lớp ngoài cùng bằng các managed rule group của AWS WAF (Common Rule Set, SQL Injection, Known Bad Inputs) kết hợp một rule giới hạn tốc độ (rate-based) chặn IP gửi quá 2.000 request/5 phút.
+* **Đồng bộ dữ liệu:** Đơn hàng được ghi đồng bộ vào RDS ngay tại thời điểm checkout — trước khi đưa vào hàng đợi — nên transaction database, chứ không phải thứ tự hàng đợi, đảm bảo không trùng đơn. Một SQS queue tiêu chuẩn (standard, không FIFO) sau đó tách việc gửi email/ghi log khỏi luồng phản hồi khách hàng, kèm dead-letter queue (tối đa 3 lần thử) để cô lập message lỗi thay vì âm thầm mất dữ liệu.
 * **Kiểm soát chi phí:** Cấu hình **AWS Budgets** tự động gửi thông báo qua **AWS SNS** đến email quản trị viên khi chi phí thực tế chạm ngưỡng 80% ngân sách dự kiến.
 
 ---
