@@ -1,6 +1,6 @@
 ---
 title: "Week 8 Worklog"
-date: 2024-01-01
+date: 2026-06-08
 weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.8. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Learn the fundamentals of Transit Gateway <br> - Use CloudFormation to provision the `Lab20-Stack` lab environment (multiple VPCs + EC2 hosts) | 08/03/2026 | 08/03/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Prepare the `tgw-key.pem` key pair <br> - Use `scp` to copy the key to the EC2 hosts to prepare for transit connectivity | 08/04/2026 | 08/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create the Transit Gateway `lab20-tgw` <br> - Check the TGW's initialization status | 08/05/2026 | 08/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Create the first Transit Gateway VPC attachment <br> - Attach the remaining VPCs to the TGW (4 attachments in total) | 08/06/2026 | 08/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Create the Transit Gateway route table `lab20-TGW-RT` <br> - Associate the 4 attachments with the route table for centralized routing | 08/07/2026 | 08/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Learn the fundamentals of Transit Gateway <br> - Use CloudFormation to provision the `Lab20-Stack` lab environment (multiple VPCs + EC2 hosts) | 08/06/2026 | 08/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Prepare the `tgw-key.pem` key pair <br> - Use `scp` to copy the key to the EC2 hosts to prepare for transit connectivity | 09/06/2026 | 09/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Create the Transit Gateway `lab20-tgw` <br> - Check the TGW's initialization status | 10/06/2026 | 10/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Create the first Transit Gateway VPC attachment <br> - Attach the remaining VPCs to the TGW (4 attachments in total) | 11/06/2026 | 11/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Create the Transit Gateway route table `lab20-TGW-RT` <br> - Associate the 4 attachments with the route table for centralized routing | 12/06/2026 | 12/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Detailed work performed:
 

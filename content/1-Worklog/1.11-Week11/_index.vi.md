@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 11"
-date: 2024-01-01
+date: 2026-06-29
 weight: 2
 chapter: false
 pre: " <b> 1.11. </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.11. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Kiểm thử kết nối và định tuyến toàn hệ thống <br> - Dùng Reachability Analyzer, ping và kiểm tra route peering/Transit Gateway <br> - Ghi nhận các lỗi phát hiện | 24/08/2026 | 24/08/2026 | Tổng hợp nội bộ |
-| 3   | - Diễn tập khôi phục (restore drill) từ recovery point AWS Backup <br> - Kiểm thử alarm/SNS bằng cách tạo tình huống vượt ngưỡng | 25/08/2026 | 25/08/2026 | Tổng hợp nội bộ |
-| 4   | - Rà soát bảo mật: siết Security Group theo least privilege <br> - Kiểm tra IAM role/policy, gỡ quyền thừa, đóng port không dùng | 26/08/2026 | 26/08/2026 | Tổng hợp nội bộ |
-| 5   | - Tối ưu chi phí: right-size EC2, đặt retention cho CloudWatch Logs/Backup <br> - Dọn Elastic IP, NAT Gateway và tài nguyên thừa của các bài lab cũ | 27/08/2026 | 27/08/2026 | Tổng hợp nội bộ |
-| 6   | - Sửa các lỗi phát hiện trong tuần <br> - Chạy lại kiểm thử hồi quy, xác nhận hệ thống ổn định | 28/08/2026 | 28/08/2026 | Tổng hợp nội bộ |
+| 2   | - Kiểm thử kết nối và định tuyến toàn hệ thống <br> - Dùng Reachability Analyzer, ping và kiểm tra route peering/Transit Gateway <br> - Ghi nhận các lỗi phát hiện | 29/06/2026 | 29/06/2026 | Tổng hợp nội bộ |
+| 3   | - Diễn tập khôi phục (restore drill) từ recovery point AWS Backup <br> - Kiểm thử alarm/SNS bằng cách tạo tình huống vượt ngưỡng | 30/06/2026 | 30/06/2026 | Tổng hợp nội bộ |
+| 4   | - Rà soát bảo mật: siết Security Group theo least privilege <br> - Kiểm tra IAM role/policy, gỡ quyền thừa, đóng port không dùng | 01/07/2026 | 01/07/2026 | Tổng hợp nội bộ |
+| 5   | - Tối ưu chi phí: right-size EC2, đặt retention cho CloudWatch Logs/Backup <br> - Dọn Elastic IP, NAT Gateway và tài nguyên thừa của các bài lab cũ | 02/07/2026 | 02/07/2026 | Tổng hợp nội bộ |
+| 6   | - Sửa các lỗi phát hiện trong tuần <br> - Chạy lại kiểm thử hồi quy, xác nhận hệ thống ổn định | 03/07/2026 | 03/07/2026 | Tổng hợp nội bộ |
 
 ### Nội dung thực hiện chi tiết:
 

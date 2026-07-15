@@ -1,6 +1,6 @@
 ---
 title: "Week 9 Worklog"
-date: 2024-01-01
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.9. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.9. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Learn the fundamentals of Systems Manager <br> - Create the `windows-lab-ssm-vpc` VPC (`10.0.0.0/16`) <br> - Launch 2 Windows EC2 instances (`Windows-Lab-SSM-1`, `Windows-Lab-SSM-2`) | 08/10/2026 | 08/10/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Create the IAM Role `Windows-Lab-SSM-Role` (trusted entity EC2) <br> - Attach the role to both instances to grant SSM permissions | 08/11/2026 | 08/11/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Check managed nodes in Fleet Manager (Ping status Online) <br> - Use Session Manager to connect PowerShell into both Windows instances | 08/12/2026 | 08/12/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Use Patch Manager to scan and install patches on the 2 instances (Install operation) | 08/13/2026 | 08/13/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Use Run Command to run a PowerShell script on both instances <br> - View the returned command output | 08/14/2026 | 08/14/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Learn the fundamentals of Systems Manager <br> - Create the `windows-lab-ssm-vpc` VPC (`10.0.0.0/16`) <br> - Launch 2 Windows EC2 instances (`Windows-Lab-SSM-1`, `Windows-Lab-SSM-2`) | 15/06/2026 | 15/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Create the IAM Role `Windows-Lab-SSM-Role` (trusted entity EC2) <br> - Attach the role to both instances to grant SSM permissions | 16/06/2026 | 16/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Check managed nodes in Fleet Manager (Ping status Online) <br> - Use Session Manager to connect PowerShell into both Windows instances | 17/06/2026 | 17/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Use Patch Manager to scan and install patches on the 2 instances (Install operation) | 18/06/2026 | 18/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Use Run Command to run a PowerShell script on both instances <br> - View the returned command output | 19/06/2026 | 19/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Detailed work performed:
 

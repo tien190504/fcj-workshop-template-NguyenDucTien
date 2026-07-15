@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 7"
-date: 2024-01-01
+date: 2026-06-01
 weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.7. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Tìm hiểu tổng quan VPC Peering <br> - Dùng CloudFormation dựng VPC `My-VPC-Stack` (`172.31.0.0/16`) <br> - Dùng CloudFormation dựng VPC `HG-VPC-Stack` (`10.10.0.0/16`) | 27/07/2026 | 27/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Tạo Security Group `MY VPC SG` cho VPC My VPC (mở SSH 22, ICMP) <br> - Tạo Security Group `HG VPC SG` cho VPC HG VPC | 28/07/2026 | 28/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Khởi chạy EC2 `EC2 - My VPC` (`t2.micro`) trong My VPC <br> - Khởi chạy EC2 `EC2 - HG VPC` (`t2.micro`) trong HG VPC | 29/07/2026 | 29/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - SSH vào `EC2 - My VPC` bằng EC2 Instance Connect <br> - Ping tới public IP của `EC2 - HG VPC` để kiểm tra kết nối qua Internet | 30/07/2026 | 30/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Tạo VPC peering connection `lab-vpc-peer` (My VPC ↔ HG VPC) <br> - Chấp nhận (accept) peering connection <br> - Kiểm tra phân giải DNS và kết nối private giữa hai VPC | 31/07/2026 | 31/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu tổng quan VPC Peering <br> - Dùng CloudFormation dựng VPC `My-VPC-Stack` (`172.31.0.0/16`) <br> - Dùng CloudFormation dựng VPC `HG-VPC-Stack` (`10.10.0.0/16`) | 01/06/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Tạo Security Group `MY VPC SG` cho VPC My VPC (mở SSH 22, ICMP) <br> - Tạo Security Group `HG VPC SG` cho VPC HG VPC | 02/06/2026 | 02/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Khởi chạy EC2 `EC2 - My VPC` (`t2.micro`) trong My VPC <br> - Khởi chạy EC2 `EC2 - HG VPC` (`t2.micro`) trong HG VPC | 03/06/2026 | 03/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - SSH vào `EC2 - My VPC` bằng EC2 Instance Connect <br> - Ping tới public IP của `EC2 - HG VPC` để kiểm tra kết nối qua Internet | 04/06/2026 | 04/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tạo VPC peering connection `lab-vpc-peer` (My VPC ↔ HG VPC) <br> - Chấp nhận (accept) peering connection <br> - Kiểm tra phân giải DNS và kết nối private giữa hai VPC | 05/06/2026 | 05/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Nội dung thực hiện chi tiết:
 

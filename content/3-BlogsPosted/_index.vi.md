@@ -1,13 +1,10 @@
 ---
 title: "Các bài blogs đã đăng"
-date: 2024-01-01
+date: 2026-04-17
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
-
-
-Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã đăng trên [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Ví dụ:
 
 ###  [Blog 1 - Workload Discovery on AWS](3.1-Blog1/)
 Bài viết này giới thiệu về Workload Discovery on AWS (trước đây là AWS Perspective) – một giải pháp đắc lực giúp bạn tự động thu thập inventory và visualize toàn bộ kiến trúc tài nguyên AWS đa account, đa region một cách trực quan dưới dạng biểu đồ tương tác.

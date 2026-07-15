@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
+date: 2026-06-08
 weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.8. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Tìm hiểu tổng quan Transit Gateway <br> - Dùng CloudFormation dựng môi trường lab `Lab20-Stack` (nhiều VPC + EC2 host) | 03/08/2026 | 03/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Chuẩn bị key pair `tgw-key.pem` <br> - Dùng `scp` copy key tới các EC2 host để chuẩn bị kết nối chuyển tiếp | 04/08/2026 | 04/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo Transit Gateway `lab20-tgw` <br> - Kiểm tra trạng thái khởi tạo của TGW | 05/08/2026 | 05/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tạo Transit Gateway VPC attachment đầu tiên <br> - Gắn thêm các VPC còn lại vào TGW (tổng cộng 4 attachment) | 06/08/2026 | 06/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Tạo Transit Gateway route table `lab20-TGW-RT` <br> - Associate 4 attachment vào route table để định tuyến tập trung | 07/08/2026 | 07/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu tổng quan Transit Gateway <br> - Dùng CloudFormation dựng môi trường lab `Lab20-Stack` (nhiều VPC + EC2 host) | 08/06/2026 | 08/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Chuẩn bị key pair `tgw-key.pem` <br> - Dùng `scp` copy key tới các EC2 host để chuẩn bị kết nối chuyển tiếp | 09/06/2026 | 09/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tạo Transit Gateway `lab20-tgw` <br> - Kiểm tra trạng thái khởi tạo của TGW | 10/06/2026 | 10/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tạo Transit Gateway VPC attachment đầu tiên <br> - Gắn thêm các VPC còn lại vào TGW (tổng cộng 4 attachment) | 11/06/2026 | 11/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tạo Transit Gateway route table `lab20-TGW-RT` <br> - Associate 4 attachment vào route table để định tuyến tập trung | 12/06/2026 | 12/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Nội dung thực hiện chi tiết:
 

@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 6"
-date: 2024-01-01
+date: 2026-05-25
 weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.6. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Tìm hiểu tổng quan AWS Backup <br> - Kiểm tra cấu hình AWS CLI (`~/.aws`, profile, region) <br> - Tạo S3 bucket `aws-backup-plan-bucket-2026-by-tien-nguyen` <br> - Tải file lab `backup-lab.yaml` và `lambda_function.zip` lên bucket | 20/07/2026 | 20/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Dùng CloudFormation dựng stack `Buckup-plan` từ template `backup-lab.yaml` <br> - Theo dõi quá trình tạo tài nguyên (VPC, Subnet, EC2…) <br> - Kiểm chứng ứng dụng web chạy trên EC2 public IP | 21/07/2026 | 21/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Xem lại **Backup plan** `Buckup-plan` do stack tạo ra <br> - Tìm hiểu backup rule `BACKUP-LAB-RULE`, backup vault mặc định và resource assignment `BACKUP-RESOURCES` | 22/07/2026 | 22/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Kiểm tra SNS topic `BackupNotificationTopic-Buckup-plan` và các subscription <br> - Dùng AWS CLI cấu hình `put-backup-vault-notifications` cho vault `BACKUP-LAB-VAULT` với sự kiện `BACKUP_JOB_COMPLETED`, `RESTORE_JOB_COMPLETED` | 23/07/2026 | 23/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Tạo backup job on-demand cho EC2 instance vào vault `BACKUP-LAB-VAULT` <br> - Theo dõi backup job đến trạng thái Completed <br> - Restore recovery point thành EC2 instance mới | 24/07/2026 | 24/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu tổng quan AWS Backup <br> - Kiểm tra cấu hình AWS CLI (`~/.aws`, profile, region) <br> - Tạo S3 bucket `aws-backup-plan-bucket-2026-by-tien-nguyen` <br> - Tải file lab `backup-lab.yaml` và `lambda_function.zip` lên bucket | 25/05/2026 | 25/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Dùng CloudFormation dựng stack `Buckup-plan` từ template `backup-lab.yaml` <br> - Theo dõi quá trình tạo tài nguyên (VPC, Subnet, EC2…) <br> - Kiểm chứng ứng dụng web chạy trên EC2 public IP | 26/05/2026 | 26/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Xem lại **Backup plan** `Buckup-plan` do stack tạo ra <br> - Tìm hiểu backup rule `BACKUP-LAB-RULE`, backup vault mặc định và resource assignment `BACKUP-RESOURCES` | 27/05/2026 | 27/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Kiểm tra SNS topic `BackupNotificationTopic-Buckup-plan` và các subscription <br> - Dùng AWS CLI cấu hình `put-backup-vault-notifications` cho vault `BACKUP-LAB-VAULT` với sự kiện `BACKUP_JOB_COMPLETED`, `RESTORE_JOB_COMPLETED` | 28/05/2026 | 28/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tạo backup job on-demand cho EC2 instance vào vault `BACKUP-LAB-VAULT` <br> - Theo dõi backup job đến trạng thái Completed <br> - Restore recovery point thành EC2 instance mới | 29/05/2026 | 29/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Nội dung thực hiện chi tiết:
 

@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 12"
-date: 2024-01-01
+date: 2026-07-06
 weight: 2
 chapter: false
 pre: " <b> 1.12 </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.12 </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Rà soát toàn bộ worklog Tuần 1–11 <br> - Kiểm tra tính nhất quán về thuật ngữ, format và đường dẫn <br> - Chuẩn hóa lại tài liệu | 31/08/2026 | 31/08/2026 | Tổng hợp nội bộ |
-| 3   | - Viết tài liệu kiến trúc tổng thể của hệ thống <br> - Viết runbook vận hành: deploy, giám sát, backup/restore, quản lý qua SSM | 01/09/2026 | 01/09/2026 | Tổng hợp nội bộ |
-| 4   | - Tổng kết kiến thức toàn khóa: bản đồ dịch vụ đã học và mối liên hệ giữa các tuần <br> - Tự đánh giá kết quả so với mục tiêu ban đầu | 02/09/2026 | 02/09/2026 | Tổng hợp nội bộ |
-| 5   | - Chuẩn bị kịch bản demo ứng dụng AWS FCJ Management và hạ tầng <br> - Soạn nội dung trình bày sản phẩm | 03/09/2026 | 03/09/2026 | Tổng hợp nội bộ |
-| 6   | - Trình bày/bàn giao sản phẩm <br> - Dọn dẹp toàn bộ tài nguyên AWS để tránh phát sinh chi phí <br> - Kết thúc kỳ thực tập | 04/09/2026 | 04/09/2026 | Tổng hợp nội bộ |
+| 2   | - Rà soát toàn bộ worklog Tuần 1–11 <br> - Kiểm tra tính nhất quán về thuật ngữ, format và đường dẫn <br> - Chuẩn hóa lại tài liệu | 06/07/2026 | 06/07/2026 | Tổng hợp nội bộ |
+| 3   | - Viết tài liệu kiến trúc tổng thể của hệ thống <br> - Viết runbook vận hành: deploy, giám sát, backup/restore, quản lý qua SSM | 07/07/2026 | 07/07/2026 | Tổng hợp nội bộ |
+| 4   | - Tổng kết kiến thức toàn khóa: bản đồ dịch vụ đã học và mối liên hệ giữa các tuần <br> - Tự đánh giá kết quả so với mục tiêu ban đầu | 08/07/2026 | 08/07/2026 | Tổng hợp nội bộ |
+| 5   | - Chuẩn bị kịch bản demo ứng dụng AWS FCJ Management và hạ tầng <br> - Soạn nội dung trình bày sản phẩm | 09/07/2026 | 09/07/2026 | Tổng hợp nội bộ |
+| 6   | - Trình bày/bàn giao sản phẩm <br> - Dọn dẹp toàn bộ tài nguyên AWS để tránh phát sinh chi phí <br> - Kết thúc kỳ thực tập | 10/07/2026 | 10/07/2026 | Tổng hợp nội bộ |
 
 ### Nội dung thực hiện chi tiết:
 

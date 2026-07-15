@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 9"
-date: 2024-01-01
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.9. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.9. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Tìm hiểu tổng quan Systems Manager <br> - Tạo VPC `windows-lab-ssm-vpc` (`10.0.0.0/16`) <br> - Khởi chạy 2 EC2 Windows (`Windows-Lab-SSM-1`, `Windows-Lab-SSM-2`) | 10/08/2026 | 10/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Tạo IAM Role `Windows-Lab-SSM-Role` (trusted entity EC2) <br> - Gán role cho cả hai instance để cấp quyền SSM | 11/08/2026 | 11/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Kiểm tra managed nodes trên Fleet Manager (Ping status Online) <br> - Dùng Session Manager kết nối PowerShell vào cả hai Windows instance | 12/08/2026 | 12/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Dùng Patch Manager quét và cài bản vá cho 2 instance (operation Install) | 13/08/2026 | 13/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Dùng Run Command chạy PowerShell script trên cả hai instance <br> - Xem output trả về của lệnh | 14/08/2026 | 14/08/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu tổng quan Systems Manager <br> - Tạo VPC `windows-lab-ssm-vpc` (`10.0.0.0/16`) <br> - Khởi chạy 2 EC2 Windows (`Windows-Lab-SSM-1`, `Windows-Lab-SSM-2`) | 15/06/2026 | 15/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Tạo IAM Role `Windows-Lab-SSM-Role` (trusted entity EC2) <br> - Gán role cho cả hai instance để cấp quyền SSM | 16/06/2026 | 16/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Kiểm tra managed nodes trên Fleet Manager (Ping status Online) <br> - Dùng Session Manager kết nối PowerShell vào cả hai Windows instance | 17/06/2026 | 17/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Dùng Patch Manager quét và cài bản vá cho 2 instance (operation Install) | 18/06/2026 | 18/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Dùng Run Command chạy PowerShell script trên cả hai instance <br> - Xem output trả về của lệnh | 19/06/2026 | 19/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Nội dung thực hiện chi tiết:
 

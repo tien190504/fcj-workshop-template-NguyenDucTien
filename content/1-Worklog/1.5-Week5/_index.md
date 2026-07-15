@@ -1,6 +1,6 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
+date: 2026-05-18
 weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.5. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Learn CloudWatch fundamentals: Metrics, Logs, Alarms, Dashboards <br> - Create the CloudFormation stack `FCJ-CloudWatch-Workshop` to provision the workshop infrastructure <br> - Browse the EC2 `CPUUtilization` metric and graph it for the test instances | 07/13/2026 | 07/13/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Plot 2 metrics with different units (`CPUUtilization`, `EBSWriteBytes`) on one graph with 2 Y axes <br> - Add a horizontal annotation (5% threshold) and a vertical annotation (`Job start`) to the graph | 07/14/2026 | 07/14/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Use metric math: `SEARCH` expressions to gather metrics in bulk, `SORT` to rank instances <br> - Browse the `procstat_memory_rss` metric in the `CWAgent` namespace <br> - Create dynamic labels with `${PROP('Dim.…')}` and fix an Invalid syntax error | 07/15/2026 | 07/15/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Set a 1-week retention policy for the `/ec2/linux/var/log/messages` log group <br> - Create the `PythonAppErrors` metric filter to count ERROR lines from the Python application logs | 07/16/2026 | 07/16/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Create the `PythonApplicationErrorAlarm` alarm (ERROR > 10 within 1 minute) attached to the SNS topic `Error_logs_reach_10` <br> - Confirm the SNS subscription via email <br> - Add the alarm widget to the `CloudWatch-Workshop` dashboard | 07/17/2026 | 07/17/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Learn CloudWatch fundamentals: Metrics, Logs, Alarms, Dashboards <br> - Create the CloudFormation stack `FCJ-CloudWatch-Workshop` to provision the workshop infrastructure <br> - Browse the EC2 `CPUUtilization` metric and graph it for the test instances | 18/05/2026 | 18/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Plot 2 metrics with different units (`CPUUtilization`, `EBSWriteBytes`) on one graph with 2 Y axes <br> - Add a horizontal annotation (5% threshold) and a vertical annotation (`Job start`) to the graph | 19/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Use metric math: `SEARCH` expressions to gather metrics in bulk, `SORT` to rank instances <br> - Browse the `procstat_memory_rss` metric in the `CWAgent` namespace <br> - Create dynamic labels with `${PROP('Dim.…')}` and fix an Invalid syntax error | 20/05/2026 | 20/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Set a 1-week retention policy for the `/ec2/linux/var/log/messages` log group <br> - Create the `PythonAppErrors` metric filter to count ERROR lines from the Python application logs | 21/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Create the `PythonApplicationErrorAlarm` alarm (ERROR > 10 within 1 minute) attached to the SNS topic `Error_logs_reach_10` <br> - Confirm the SNS subscription via email <br> - Add the alarm widget to the `CloudWatch-Workshop` dashboard | 22/05/2026 | 22/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Detailed work performed:
 

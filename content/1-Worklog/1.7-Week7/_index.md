@@ -1,6 +1,6 @@
 ---
 title: "Week 7 Worklog"
-date: 2024-01-01
+date: 2026-06-01
 weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.7. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Learn the fundamentals of VPC Peering <br> - Use CloudFormation to provision the `My-VPC-Stack` VPC (`172.31.0.0/16`) <br> - Use CloudFormation to provision the `HG-VPC-Stack` VPC (`10.10.0.0/16`) | 07/27/2026 | 07/27/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Create the Security Group `MY VPC SG` for the My VPC (open SSH 22, ICMP) <br> - Create the Security Group `HG VPC SG` for the HG VPC | 07/28/2026 | 07/28/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Launch the EC2 instance `EC2 - My VPC` (`t2.micro`) in My VPC <br> - Launch the EC2 instance `EC2 - HG VPC` (`t2.micro`) in HG VPC | 07/29/2026 | 07/29/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - SSH into `EC2 - My VPC` using EC2 Instance Connect <br> - Ping the public IP of `EC2 - HG VPC` to test connectivity over the Internet | 07/30/2026 | 07/30/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Create the VPC peering connection `lab-vpc-peer` (My VPC ↔ HG VPC) <br> - Accept the peering connection <br> - Test DNS resolution and private connectivity between the two VPCs | 07/31/2026 | 07/31/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Learn the fundamentals of VPC Peering <br> - Use CloudFormation to provision the `My-VPC-Stack` VPC (`172.31.0.0/16`) <br> - Use CloudFormation to provision the `HG-VPC-Stack` VPC (`10.10.0.0/16`) | 01/06/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Create the Security Group `MY VPC SG` for the My VPC (open SSH 22, ICMP) <br> - Create the Security Group `HG VPC SG` for the HG VPC | 02/06/2026 | 02/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Launch the EC2 instance `EC2 - My VPC` (`t2.micro`) in My VPC <br> - Launch the EC2 instance `EC2 - HG VPC` (`t2.micro`) in HG VPC | 03/06/2026 | 03/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - SSH into `EC2 - My VPC` using EC2 Instance Connect <br> - Ping the public IP of `EC2 - HG VPC` to test connectivity over the Internet | 04/06/2026 | 04/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Create the VPC peering connection `lab-vpc-peer` (My VPC ↔ HG VPC) <br> - Accept the peering connection <br> - Test DNS resolution and private connectivity between the two VPCs | 05/06/2026 | 05/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Detailed work performed:
 

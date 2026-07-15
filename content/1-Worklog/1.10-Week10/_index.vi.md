@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 10"
-date: 2024-01-01
+date: 2026-06-22
 weight: 2
 chapter: false
 pre: " <b> 1.10. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.10. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Rà soát toàn bộ tài nguyên đã tạo từ Tuần 1–9 <br> - Lập danh mục (inventory) VPC, EC2, RDS, S3, IAM… <br> - Vẽ lại sơ đồ kiến trúc tổng thể của hệ thống | 17/08/2026 | 17/08/2026 | Tổng hợp nội bộ |
-| 3   | - Chuẩn hóa hạ tầng bằng CloudFormation template <br> - Áp dụng quy ước đặt tên và gắn tag nhất quán cho tài nguyên | 18/08/2026 | 18/08/2026 | Tổng hợp nội bộ |
-| 4   | - Triển khai lại ứng dụng AWS FCJ Management trên EC2 trong VPC chuẩn <br> - Kết nối ứng dụng với cơ sở dữ liệu RDS <br> - Gắn Security Group đúng vai trò app/db | 19/08/2026 | 19/08/2026 | Tổng hợp nội bộ |
-| 5   | - Tạo CloudWatch dashboard và alarm cho EC2/RDS <br> - Gắn hành động thông báo qua SNS <br> - Đưa EC2 vào Systems Manager (managed node) | 20/08/2026 | 20/08/2026 | Tổng hợp nội bộ |
-| 6   | - Cấu hình AWS Backup plan cho EC2/RDS <br> - Kiểm thử end-to-end toàn bộ luồng hệ thống tích hợp | 21/08/2026 | 21/08/2026 | Tổng hợp nội bộ |
+| 2   | - Rà soát toàn bộ tài nguyên đã tạo từ Tuần 1–9 <br> - Lập danh mục (inventory) VPC, EC2, RDS, S3, IAM… <br> - Vẽ lại sơ đồ kiến trúc tổng thể của hệ thống | 22/06/2026 | 22/06/2026 | Tổng hợp nội bộ |
+| 3   | - Chuẩn hóa hạ tầng bằng CloudFormation template <br> - Áp dụng quy ước đặt tên và gắn tag nhất quán cho tài nguyên | 23/06/2026 | 23/06/2026 | Tổng hợp nội bộ |
+| 4   | - Triển khai lại ứng dụng AWS FCJ Management trên EC2 trong VPC chuẩn <br> - Kết nối ứng dụng với cơ sở dữ liệu RDS <br> - Gắn Security Group đúng vai trò app/db | 24/06/2026 | 24/06/2026 | Tổng hợp nội bộ |
+| 5   | - Tạo CloudWatch dashboard và alarm cho EC2/RDS <br> - Gắn hành động thông báo qua SNS <br> - Đưa EC2 vào Systems Manager (managed node) | 25/06/2026 | 25/06/2026 | Tổng hợp nội bộ |
+| 6   | - Cấu hình AWS Backup plan cho EC2/RDS <br> - Kiểm thử end-to-end toàn bộ luồng hệ thống tích hợp | 26/06/2026 | 26/06/2026 | Tổng hợp nội bộ |
 
 ### Nội dung thực hiện chi tiết:
 

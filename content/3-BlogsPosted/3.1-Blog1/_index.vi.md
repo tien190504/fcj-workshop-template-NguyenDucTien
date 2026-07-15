@@ -1,6 +1,6 @@
 ---
 title: 'Workload Discovery on AWS – Công cụ "vẽ" kiến trúc đám mây siêu thông minh!'
-date: 2024-01-01
+date: 2026-04-17
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "

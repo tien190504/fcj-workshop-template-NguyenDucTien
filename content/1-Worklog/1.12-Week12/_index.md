@@ -1,6 +1,6 @@
 ---
 title: "Week 12 Worklog"
-date: 2024-01-01
+date: 2026-07-06
 weight: 2
 chapter: false
 pre: " <b> 1.12. </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.12. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Review all worklogs from Week 1–11 <br> - Check consistency of terminology, format, and links <br> - Standardize the documentation | 08/31/2026 | 08/31/2026 | Internal compilation |
-| 3   | - Write the overall system architecture documentation <br> - Write the operational runbook: deploy, monitor, backup/restore, manage via SSM | 09/01/2026 | 09/01/2026 | Internal compilation |
-| 4   | - Summarize the knowledge from the whole course: a map of the services learned and the connections between weeks <br> - Self-evaluate the results against the original objectives | 09/02/2026 | 09/02/2026 | Internal compilation |
-| 5   | - Prepare the demo script for the AWS FCJ Management application and the infrastructure <br> - Draft the product presentation content | 09/03/2026 | 09/03/2026 | Internal compilation |
-| 6   | - Present/hand over the product <br> - Clean up all AWS resources to avoid incurring costs <br> - Conclude the internship | 09/04/2026 | 09/04/2026 | Internal compilation |
+| 2   | - Review all worklogs from Week 1–11 <br> - Check consistency of terminology, format, and links <br> - Standardize the documentation | 06/07/2026 | 06/07/2026 | Internal compilation |
+| 3   | - Write the overall system architecture documentation <br> - Write the operational runbook: deploy, monitor, backup/restore, manage via SSM | 07/07/2026 | 07/07/2026 | Internal compilation |
+| 4   | - Summarize the knowledge from the whole course: a map of the services learned and the connections between weeks <br> - Self-evaluate the results against the original objectives | 08/07/2026 | 08/07/2026 | Internal compilation |
+| 5   | - Prepare the demo script for the AWS FCJ Management application and the infrastructure <br> - Draft the product presentation content | 09/07/2026 | 09/07/2026 | Internal compilation |
+| 6   | - Present/hand over the product <br> - Clean up all AWS resources to avoid incurring costs <br> - Conclude the internship | 10/07/2026 | 10/07/2026 | Internal compilation |
 
 ### Detailed work performed:
 

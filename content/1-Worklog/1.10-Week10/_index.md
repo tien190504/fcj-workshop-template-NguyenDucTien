@@ -1,6 +1,6 @@
 ---
 title: "Week 10 Worklog"
-date: 2024-01-01
+date: 2026-06-22
 weight: 2
 chapter: false
 pre: " <b> 1.10. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.10. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Review all resources created from Week 1–9 <br> - Inventory the VPCs, EC2, RDS, S3, IAM… <br> - Redraw the overall system architecture diagram | 08/17/2026 | 08/17/2026 | Internal compilation |
-| 3   | - Standardize the infrastructure with CloudFormation templates <br> - Apply consistent naming conventions and tags to resources | 08/18/2026 | 08/18/2026 | Internal compilation |
-| 4   | - Redeploy the AWS FCJ Management application on EC2 in the standard VPC <br> - Connect the application to the RDS database <br> - Attach role-appropriate app/db Security Groups | 08/19/2026 | 08/19/2026 | Internal compilation |
-| 5   | - Create a CloudWatch dashboard and alarms for EC2/RDS <br> - Attach an SNS notification action <br> - Bring EC2 into Systems Manager (managed node) | 08/20/2026 | 08/20/2026 | Internal compilation |
-| 6   | - Configure an AWS Backup plan for EC2/RDS <br> - Run an end-to-end test of the whole integrated system flow | 08/21/2026 | 08/21/2026 | Internal compilation |
+| 2   | - Review all resources created from Week 1–9 <br> - Inventory the VPCs, EC2, RDS, S3, IAM… <br> - Redraw the overall system architecture diagram | 22/06/2026 | 22/06/2026 | Internal compilation |
+| 3   | - Standardize the infrastructure with CloudFormation templates <br> - Apply consistent naming conventions and tags to resources | 23/06/2026 | 23/06/2026 | Internal compilation |
+| 4   | - Redeploy the AWS FCJ Management application on EC2 in the standard VPC <br> - Connect the application to the RDS database <br> - Attach role-appropriate app/db Security Groups | 24/06/2026 | 24/06/2026 | Internal compilation |
+| 5   | - Create a CloudWatch dashboard and alarms for EC2/RDS <br> - Attach an SNS notification action <br> - Bring EC2 into Systems Manager (managed node) | 25/06/2026 | 25/06/2026 | Internal compilation |
+| 6   | - Configure an AWS Backup plan for EC2/RDS <br> - Run an end-to-end test of the whole integrated system flow | 26/06/2026 | 26/06/2026 | Internal compilation |
 
 ### Detailed work performed:
 

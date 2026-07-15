@@ -1,6 +1,6 @@
 ---
 title: "Internship Report"
-date: 2024-01-01
+date: 2026-04-17
 weight: 1
 chapter: false
 ---
@@ -13,7 +13,7 @@ chapter: false
 
 &emsp; **Phone Number:** 0386078369
 
-&emsp; **Email:** tienguyen4118@gmail.com
+&emsp; **Email:** tiennguyen4118@gmail.com
 
 &emsp; **University:** HUTECH University of Technology
 
@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
+&emsp; **Internship Duration:** From 17/04/2026 to 30/07/2026
 
 &emsp; **Github:** [https://github.com/tien190504](https://github.com/tien190504)
 

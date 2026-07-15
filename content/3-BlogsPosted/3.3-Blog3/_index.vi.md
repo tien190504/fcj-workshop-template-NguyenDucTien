@@ -1,6 +1,6 @@
 ---
 title: "AWS DX – DXGW với AWS Transit Gateway Multi-Regions và AWS Public Peering"
-date: 2024-01-01
+date: 2026-04-17
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "

@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 5"
-date: 2024-01-01
+date: 2026-05-18
 weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.5. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2   | - Tìm hiểu tổng quan CloudWatch: Metrics, Logs, Alarms, Dashboards <br> - Tạo CloudFormation stack `FCJ-CloudWatch-Workshop` dựng hạ tầng workshop <br> - Duyệt metric `CPUUtilization` của EC2 và vẽ đồ thị cho các instance test | 13/07/2026 | 13/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Vẽ 2 metric khác đơn vị (`CPUUtilization`, `EBSWriteBytes`) trên cùng đồ thị với 2 trục Y <br> - Thêm horizontal annotation (ngưỡng 5%) và vertical annotation (`Job start`) cho đồ thị | 14/07/2026 | 14/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Dùng metric math: biểu thức `SEARCH` gom metric hàng loạt, `SORT` xếp hạng instance <br> - Duyệt metric `procstat_memory_rss` trong namespace `CWAgent` <br> - Tạo dynamic label với `${PROP('Dim.…')}`, xử lý lỗi Invalid syntax | 15/07/2026 | 15/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Cấu hình retention 1 tuần cho log group `/ec2/linux/var/log/messages` <br> - Tạo metric filter `PythonAppErrors` đếm dòng log ERROR của ứng dụng Python | 16/07/2026 | 16/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Tạo alarm `PythonApplicationErrorAlarm` (ERROR > 10 trong 1 phút) gắn SNS topic `Error_logs_reach_10` <br> - Xác nhận subscription SNS qua email <br> - Thêm widget alarm vào dashboard `CloudWatch-Workshop` | 17/07/2026 | 17/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu tổng quan CloudWatch: Metrics, Logs, Alarms, Dashboards <br> - Tạo CloudFormation stack `FCJ-CloudWatch-Workshop` dựng hạ tầng workshop <br> - Duyệt metric `CPUUtilization` của EC2 và vẽ đồ thị cho các instance test | 18/05/2026 | 18/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Vẽ 2 metric khác đơn vị (`CPUUtilization`, `EBSWriteBytes`) trên cùng đồ thị với 2 trục Y <br> - Thêm horizontal annotation (ngưỡng 5%) và vertical annotation (`Job start`) cho đồ thị | 19/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Dùng metric math: biểu thức `SEARCH` gom metric hàng loạt, `SORT` xếp hạng instance <br> - Duyệt metric `procstat_memory_rss` trong namespace `CWAgent` <br> - Tạo dynamic label với `${PROP('Dim.…')}`, xử lý lỗi Invalid syntax | 20/05/2026 | 20/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Cấu hình retention 1 tuần cho log group `/ec2/linux/var/log/messages` <br> - Tạo metric filter `PythonAppErrors` đếm dòng log ERROR của ứng dụng Python | 21/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tạo alarm `PythonApplicationErrorAlarm` (ERROR > 10 trong 1 phút) gắn SNS topic `Error_logs_reach_10` <br> - Xác nhận subscription SNS qua email <br> - Thêm widget alarm vào dashboard `CloudWatch-Workshop` | 22/05/2026 | 22/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Nội dung thực hiện chi tiết:
 

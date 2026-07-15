@@ -1,6 +1,6 @@
 ---
 title: "Week 11 Worklog"
-date: 2024-01-01
+date: 2026-06-29
 weight: 2
 chapter: false
 pre: " <b> 1.11. </b> "
@@ -18,11 +18,11 @@ pre: " <b> 1.11. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Test connectivity and routing across the whole system <br> - Use Reachability Analyzer, ping, and check peering/Transit Gateway routes <br> - Record the issues found | 08/24/2026 | 08/24/2026 | Internal compilation |
-| 3   | - Rehearse recovery (restore drill) from an AWS Backup recovery point <br> - Test the alarm/SNS by creating a threshold-breach scenario | 08/25/2026 | 08/25/2026 | Internal compilation |
-| 4   | - Review security: tighten Security Groups by least privilege <br> - Check IAM roles/policies, remove excess permissions, close unused ports | 08/26/2026 | 08/26/2026 | Internal compilation |
-| 5   | - Optimize cost: right-size EC2, set retention for CloudWatch Logs/Backup <br> - Clean up Elastic IPs, NAT Gateways, and leftover resources from old labs | 08/27/2026 | 08/27/2026 | Internal compilation |
-| 6   | - Fix the issues found during the week <br> - Rerun regression tests, confirm the system is stable | 08/28/2026 | 08/28/2026 | Internal compilation |
+| 2   | - Test connectivity and routing across the whole system <br> - Use Reachability Analyzer, ping, and check peering/Transit Gateway routes <br> - Record the issues found | 29/06/2026 | 29/06/2026 | Internal compilation |
+| 3   | - Rehearse recovery (restore drill) from an AWS Backup recovery point <br> - Test the alarm/SNS by creating a threshold-breach scenario | 30/06/2026 | 30/06/2026 | Internal compilation |
+| 4   | - Review security: tighten Security Groups by least privilege <br> - Check IAM roles/policies, remove excess permissions, close unused ports | 01/07/2026 | 01/07/2026 | Internal compilation |
+| 5   | - Optimize cost: right-size EC2, set retention for CloudWatch Logs/Backup <br> - Clean up Elastic IPs, NAT Gateways, and leftover resources from old labs | 02/07/2026 | 02/07/2026 | Internal compilation |
+| 6   | - Fix the issues found during the week <br> - Rerun regression tests, confirm the system is stable | 03/07/2026 | 03/07/2026 | Internal compilation |
 
 ### Detailed work performed:
 

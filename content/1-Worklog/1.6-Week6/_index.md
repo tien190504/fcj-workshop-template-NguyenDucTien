@@ -1,6 +1,6 @@
 ---
 title: "Week 6 Worklog"
-date: 2024-01-01
+date: 2026-05-25
 weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
@@ -19,11 +19,11 @@ pre: " <b> 1.6. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Learn the fundamentals of AWS Backup <br> - Verify the AWS CLI configuration (`~/.aws`, profile, region) <br> - Create the S3 bucket `aws-backup-plan-bucket-2026-by-tien-nguyen` <br> - Upload the lab files `backup-lab.yaml` and `lambda_function.zip` to the bucket | 07/20/2026 | 07/20/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Use CloudFormation to provision the stack `Buckup-plan` from the `backup-lab.yaml` template <br> - Track the resource-creation process (VPC, Subnet, EC2…) <br> - Verify the web application running on the EC2 public IP | 07/21/2026 | 07/21/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Review the **Backup plan** `Buckup-plan` created by the stack <br> - Learn about the backup rule `BACKUP-LAB-RULE`, the default backup vault, and the resource assignment `BACKUP-RESOURCES` | 07/22/2026 | 07/22/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Check the SNS topic `BackupNotificationTopic-Buckup-plan` and its subscriptions <br> - Use the AWS CLI to configure `put-backup-vault-notifications` for the `BACKUP-LAB-VAULT` vault with the `BACKUP_JOB_COMPLETED`, `RESTORE_JOB_COMPLETED` events | 07/23/2026 | 07/23/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - Create an on-demand backup job for the EC2 instance into the `BACKUP-LAB-VAULT` vault <br> - Track the backup job to the Completed state <br> - Restore the recovery point into a new EC2 instance | 07/24/2026 | 07/24/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Learn the fundamentals of AWS Backup <br> - Verify the AWS CLI configuration (`~/.aws`, profile, region) <br> - Create the S3 bucket `aws-backup-plan-bucket-2026-by-tien-nguyen` <br> - Upload the lab files `backup-lab.yaml` and `lambda_function.zip` to the bucket | 25/05/2026 | 25/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Use CloudFormation to provision the stack `Buckup-plan` from the `backup-lab.yaml` template <br> - Track the resource-creation process (VPC, Subnet, EC2…) <br> - Verify the web application running on the EC2 public IP | 26/05/2026 | 26/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Review the **Backup plan** `Buckup-plan` created by the stack <br> - Learn about the backup rule `BACKUP-LAB-RULE`, the default backup vault, and the resource assignment `BACKUP-RESOURCES` | 27/05/2026 | 27/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Check the SNS topic `BackupNotificationTopic-Buckup-plan` and its subscriptions <br> - Use the AWS CLI to configure `put-backup-vault-notifications` for the `BACKUP-LAB-VAULT` vault with the `BACKUP_JOB_COMPLETED`, `RESTORE_JOB_COMPLETED` events | 28/05/2026 | 28/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Create an on-demand backup job for the EC2 instance into the `BACKUP-LAB-VAULT` vault <br> - Track the backup job to the Completed state <br> - Restore the recovery point into a new EC2 instance | 29/05/2026 | 29/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Detailed work performed:
 
