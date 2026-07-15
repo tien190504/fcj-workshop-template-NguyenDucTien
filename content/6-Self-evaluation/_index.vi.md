@@ -6,16 +6,11 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+Trong thời gian thực tập tại **Công ty TNHH Amazon Web Services Việt Nam** từ **17/04/2026** đến **30/07/2026**, tôi tham gia chương trình Workforce Bootcamp - First Cloud AI Journey và lần đầu được đưa những gì học ở trường vào một môi trường làm việc thật trên nền tảng đám mây.
 
-Trong suốt thời gian thực tập tại **[Tên công ty/tổ chức]** từ **[ngày bắt đầu]** đến **[ngày kết thúc]**, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường làm việc thực tế.  
-Tôi đã tham gia **[mô tả ngắn gọn dự án hoặc công việc chính]**, qua đó cải thiện kỹ năng **[liệt kê kỹ năng: lập trình, phân tích, viết báo cáo, giao tiếp…]**.  
+Công việc chính của tôi xoay quanh việc thực hiện các workshop AWS, triển khai ứng dụng lên AWS và hoàn thành các bài thực hành hàng tuần, sau đó ghi lại thành worklog. Ngoài ra, tôi tự xây dựng website báo cáo bằng Hugo, viết tài liệu, tham gia các event của cộng đồng và viết blog để chia sẻ những gì mình học được. Qua quá trình đó, tôi rèn được các kỹ năng nổi bật về **AWS Cloud, Hugo, Linux, Docker và Git/GitHub**.
 
-Về tác phong, tôi luôn cố gắng hoàn thành tốt nhiệm vụ, tuân thủ nội quy, và tích cực trao đổi với đồng nghiệp để nâng cao hiệu quả công việc.
-
-Để phản ánh một cách khách quan quá trình thực tập, tôi xin tự đánh giá bản thân dựa trên các tiêu chí dưới đây:
+Về tác phong, tôi cố gắng hoàn thành đúng hạn từng đầu việc, chủ động tìm hiểu trước khi hỏi và tuân thủ các quy định của chương trình. Để nhìn lại quá trình một cách khách quan, tôi tự đánh giá bản thân theo các tiêu chí dưới đây:
 
 
 | STT | Tiêu chí                            | Mô tả                                                                                            | Tốt | Khá | Trung bình |
@@ -35,6 +30,9 @@ Về tác phong, tôi luôn cố gắng hoàn thành tốt nhiệm vụ, tuân t
 
 ### Cần cải thiện
 
-* Nâng cao tính kỹ luật, chấp hành nghiêm chỉnh nội quy của công ty hoặc bất kỳ trong một tổ chức nào
-* Cải thiện trong cách tư duy giải quyết vấn đề
-* Học cách giao tiếp tốt hơn trong giao tiếp hằng ngày và trong công việc, xử lý tình huống
+* **Tiếng Anh:** phần lớn tài liệu và giao diện dịch vụ AWS đều bằng tiếng Anh, nên tôi cần trau dồi thêm để đọc hiểu nhanh hơn và diễn đạt tự tin hơn.
+* **Kỹ năng thuyết trình:** khi trình bày kết quả hay demo lại phần đã làm, tôi còn hơi lúng túng và cần luyện cách nói mạch lạc, đi thẳng vào ý chính.
+* **Quản lý thời gian:** có những tuần khối lượng bài tăng lên khiến tôi phải làm dồn vào cuối tuần; tôi cần chia nhỏ công việc và phân bổ thời gian hợp lý hơn.
+* **Tính kỷ luật:** cần giữ nề nếp ổn định hơn về giờ giấc và tiến độ, hạn chế để công việc dồn lại.
+* **Kỹ năng giao tiếp:** cần chủ động trao đổi, đặt câu hỏi và cập nhật tiến độ với mentor sớm hơn thay vì tự xoay xở quá lâu.
+* **Tư duy giải quyết vấn đề:** khi gặp lỗi, tôi cần bình tĩnh truy nguyên nhân gốc và kiểm chứng bằng nhiều hướng thay vì thử sai theo cảm tính.
