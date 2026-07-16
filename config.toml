@@ -23,6 +23,8 @@ home = [ "HTML", "RSS", "JSON"]
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
+  # Hide the "🏠 Home" button at the top of the left sidebar
+  disableLandingPageButton = true
   
 [Languages]
 [Languages.en]
