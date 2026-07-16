@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 8"
+title: "Tuần 8 - Kết nối tập trung nhiều VPC bằng AWS Transit Gateway"
 date: 2026-06-08
-weight: 1
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---

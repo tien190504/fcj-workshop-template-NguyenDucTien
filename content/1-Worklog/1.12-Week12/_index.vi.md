@@ -1,9 +1,9 @@
 ---
-title: "Worklog Tuần 12"
+title: "Tuần 12 - Rà soát tài liệu, đánh giá và bàn giao sản phẩm"
 date: 2026-07-06
-weight: 2
+weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
 
 ### Mục tiêu tuần 12:

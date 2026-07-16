@@ -1,7 +1,7 @@
 ---
-title: "Week 2 Worklog"
+title: "Week 2 - Building Amazon VPC network architecture and AWS Site-to-Site VPN"
 date: 2026-04-27
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---

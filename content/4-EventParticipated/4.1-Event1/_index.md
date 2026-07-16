@@ -1,5 +1,5 @@
 ---
-title: "Event 1"
+title: "FCAJ Community Day 2026"
 date: 2026-05-23
 weight: 1
 chapter: false

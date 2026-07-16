@@ -1,5 +1,5 @@
 ---
-title: "Worklog Tuần 1"
+title: "Tuần 1 - Làm quen với AWS: Console, IAM, Amazon S3 và EC2"
 date: 2026-04-20
 weight: 1
 chapter: false

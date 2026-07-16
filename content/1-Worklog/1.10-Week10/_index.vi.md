@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 10"
+title: "Tuần 10 - Hoàn thiện và tích hợp toàn bộ hệ thống"
 date: 2026-06-22
-weight: 2
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---

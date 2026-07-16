@@ -1,7 +1,7 @@
 ---
-title: "Week 9 Worklog"
+title: "Week 9 - Centralized server operations with AWS Systems Manager"
 date: 2026-06-15
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---

@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 11"
+title: "Tuần 11 - Kiểm thử, sửa lỗi và tối ưu hệ thống"
 date: 2026-06-29
-weight: 2
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---

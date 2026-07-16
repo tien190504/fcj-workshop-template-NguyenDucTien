@@ -1,7 +1,7 @@
 ---
-title: "Week 12 Worklog"
+title: "Week 12 - Documentation review, evaluation, and handover"
 date: 2026-07-06
-weight: 2
+weight: 12
 chapter: false
 pre: " <b> 1.12. </b> "
 ---

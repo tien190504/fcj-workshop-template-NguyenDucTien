@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 9"
+title: "Tuần 9 - Vận hành máy chủ tập trung với AWS Systems Manager"
 date: 2026-06-15
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---

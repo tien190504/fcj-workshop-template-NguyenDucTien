@@ -10,6 +10,13 @@ pre: " <b> 5. </b> "
 
 Tài liệu này là nhật ký (worklog) ghi chép lại quá trình triển khai kiến trúc AWS cho **Maison Édition** — một storefront thời trang. Phần giao diện được phục vụ từ S3 + CloudFront, phần xử lý chạy trên EC2 sau Application Load Balancer với cơ sở dữ liệu RDS PostgreSQL. Ngoài phần nền tảng đó, hệ thống bổ sung sáu chức năng, mỗi chức năng giải quyết một khoảng trống cụ thể: S3 Media (nơi lưu và phục vụ ảnh sản phẩm riêng, thay vì để app server xử lý), cache Redis (giảm tải đọc lên RDS cho dữ liệu catalog truy cập nhiều), xử lý đơn hàng bất đồng bộ với SQS + Lambda (giữ luồng checkout phản hồi nhanh, không phải chờ gửi email/ghi log), ghi lịch sử hoạt động trên DynamoDB (audit trail thao tác người dùng), giám sát bằng CloudWatch + SNS (cảnh báo sớm khi có sự cố), và tường lửa WAF ở lớp ngoài cùng (chặn tấn công trước khi chạm tới ứng dụng).
 
+{{% notice tip %}}
+**🔗 Trải nghiệm ứng dụng thực tế tại:** [https://d1tz40a6c8kj4v.cloudfront.net/](https://d1tz40a6c8kj4v.cloudfront.net/)
+{{% /notice %}}
+
+**▶️ Video demo:**
+{{< youtube oFeH611LTfE >}}
+
 Mỗi chương ghi nhận vai trò của từng dịch vụ và cách dịch vụ đó được cấu hình, kiểm tra trực tiếp trên AWS Console.
 
 ```

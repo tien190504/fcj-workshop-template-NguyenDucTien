@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 3"
+title: "Tuần 3 - Vòng đời Amazon EC2 (Windows/Linux) và triển khai ứng dụng web"
 date: 2026-05-04
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---

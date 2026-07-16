@@ -1,7 +1,7 @@
 ---
-title: "Week 10 Worklog"
+title: "Week 10 - Finalizing and integrating the whole system"
 date: 2026-06-22
-weight: 2
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---

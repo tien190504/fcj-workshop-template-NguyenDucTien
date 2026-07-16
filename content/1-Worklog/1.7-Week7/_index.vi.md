@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 7"
+title: "Tuần 7 - Kết nối riêng tư giữa các VPC bằng VPC Peering"
 date: 2026-06-01
-weight: 1
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---

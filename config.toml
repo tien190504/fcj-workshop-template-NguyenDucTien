@@ -2,6 +2,9 @@ baseURL = "https://tien190504.github.io/fcj-workshop-template-NguyenDucTien/"
 relativeURLs = false
 canonifyURLs = true
 defaultContentLanguage = "en"
+# Build pages whose front-matter date is in the future (e.g. end-of-internship
+# reflections dated 30/07/2026) so no section disappears depending on build date.
+buildFuture = true
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"

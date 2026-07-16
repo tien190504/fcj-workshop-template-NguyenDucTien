@@ -1,7 +1,7 @@
 ---
-title: "Week 11 Worklog"
+title: "Week 11 - Testing, debugging, and optimizing the system"
 date: 2026-06-29
-weight: 2
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---

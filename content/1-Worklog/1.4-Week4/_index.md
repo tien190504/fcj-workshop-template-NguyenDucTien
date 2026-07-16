@@ -1,7 +1,7 @@
 ---
-title: "Week 4 Worklog"
+title: "Week 4 - Amazon RDS database and the two-tier application model"
 date: 2026-05-11
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---

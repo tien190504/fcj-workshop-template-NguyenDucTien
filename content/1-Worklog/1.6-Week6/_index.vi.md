@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 6"
+title: "Tuần 6 - Sao lưu và phục hồi với AWS Backup"
 date: 2026-05-25
-weight: 1
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---

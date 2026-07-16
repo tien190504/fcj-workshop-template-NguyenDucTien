@@ -1,5 +1,5 @@
 ---
-title: "Event 2"
+title: "First Cloud Journey (FCJ) Community Day"
 date: 2026-06-06
 weight: 2
 chapter: false

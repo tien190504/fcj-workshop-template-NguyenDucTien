@@ -1,7 +1,7 @@
 ---
-title: "Worklog Tuần 4"
+title: "Tuần 4 - Cơ sở dữ liệu Amazon RDS và mô hình ứng dụng 2 tầng"
 date: 2026-05-11
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
